@@ -1,19 +1,72 @@
 import 'package:FirstApp/NavigationBottomBar/BottomBar2.dart';
+import 'package:FirstApp/NavigationBottomBar/CurrentPageModel.dart';
+import 'package:FirstApp/Screens/page1.dart';
+import 'package:FirstApp/Screens/page2.dart';
+import 'package:FirstApp/Screens/page3.dart';
+import 'package:FirstApp/Screens/page4.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'NavigationBottomBar/BottomBar.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CurrentPageModel(),
+      child: MyApp(),
+    ),
+  );
+}
+
+final key = new GlobalKey<MyStatefulWidget1State>();
+
+class MyStatefulWidget1 extends StatefulWidget {
+  MyStatefulWidget1({Key key}) : super(key: key);
+  State createState() => new MyStatefulWidget1State();
+}
+
+class MyStatefulWidget1State extends State<MyStatefulWidget1> {
+  String _createdObject = "Hello world!";
+  String get createdObject => _createdObject;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new Text(_createdObject),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
+  // Widget _currenPage;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //Remove Debug banner
       home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Consumer looks for an ancestor Provider widget
+              // and retrieves its model (Counter, in this case).
+              // Then it uses that model to build widgets, and will trigger
+              // rebuilds if the model is updated.
+              Consumer<CurrentPageModel>(
+                builder: (context, counter, child) {
+                  if (counter.currentIndex == 0) {
+                    return Page1();
+                  } else if (counter.currentIndex == 1) {
+                    return Page2();
+                  } else if (counter.currentIndex == 2) {
+                    return Page3();
+                  } else {
+                    return Page4();
+                  }
+                },
+              ),
+            ],
+          ),
+        ),
         extendBody: true,
         appBar: AppBar(
           title: Container(

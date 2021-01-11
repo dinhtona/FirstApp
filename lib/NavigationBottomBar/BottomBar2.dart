@@ -1,4 +1,6 @@
+import 'package:FirstApp/NavigationBottomBar/CurrentPageModel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BottomBar2 extends StatefulWidget {
   @override
@@ -46,6 +48,8 @@ class _BottomBar2State extends State<BottomBar2> {
           ],
           onTap: (index) {
             print(index);
+            var counter = context.read<CurrentPageModel>();
+            counter.changeIndex(index);
             setState(() {
               _currentindex = index;
             });
