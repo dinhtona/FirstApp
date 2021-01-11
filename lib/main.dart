@@ -1,3 +1,4 @@
+import 'package:FirstApp/NavigationBottomBar/BottomBar2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //Remove Debug banner
       home: Scaffold(
+        extendBody: true,
         appBar: AppBar(
           title: Container(
             child: Row(
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
             )
           ],
         ),
-        bottomNavigationBar: BottomBar(),
+        bottomNavigationBar: BottomBar2(),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterDocked,
         floatingActionButton: FloatingActionButton(
