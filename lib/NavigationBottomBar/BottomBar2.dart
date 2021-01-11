@@ -1,4 +1,4 @@
-import 'package:FirstApp/NavigationBottomBar/CurrentPageModel.dart';
+import 'package:FirstApp/Models/CurrentPageModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

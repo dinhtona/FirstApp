@@ -1,5 +1,5 @@
 import 'package:FirstApp/NavigationBottomBar/BottomBar2.dart';
-import 'package:FirstApp/NavigationBottomBar/CurrentPageModel.dart';
+import 'package:FirstApp/Models/CurrentPageModel.dart';
 import 'package:FirstApp/Screens/page1.dart';
 import 'package:FirstApp/Screens/page2.dart';
 import 'package:FirstApp/Screens/page3.dart';
@@ -54,12 +54,16 @@ class MyApp extends StatelessWidget {
               Consumer<CurrentPageModel>(
                 builder: (context, counter, child) {
                   if (counter.currentIndex == 0) {
+                    print(counter.currentIndex);
                     return Page1();
                   } else if (counter.currentIndex == 1) {
+                    print(counter.currentIndex);
                     return Page2();
-                  } else if (counter.currentIndex == 2) {
+                  } else if (counter.currentIndex == 3) {
+                    print(counter.currentIndex);
                     return Page3();
                   } else {
+                    print(counter.currentIndex);
                     return Page4();
                   }
                 },
