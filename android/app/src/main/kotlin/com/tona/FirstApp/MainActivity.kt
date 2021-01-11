@@ -1,0 +1,6 @@
+package com.tona.FirstApp
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
