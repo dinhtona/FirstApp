@@ -32,25 +32,17 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                 SizedBox(
                   width: 10,
                 ),
-                Consumer<ChangePage>(builder: (context, index, child) {
-                  print('Title: ' +
-                      lstPage
-                          .firstWhere((page) => page.index == index.getIndex)
-                          .title
-                          .toString());
-                  return Text(
-                    lstPage
-                        .firstWhere((page) => page.index == index.getIndex)
-                        .title
-                        .toString(),
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w600,
-                      // color: Colors.white,
-                    ),
-                  );
-                }),
+                Text(
+                  Provider.of<ChangePage>(context, listen: true)
+                      .getTitle
+                      .toString(),
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w600,
+                    // color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),

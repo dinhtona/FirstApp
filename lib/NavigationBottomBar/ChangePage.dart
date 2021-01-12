@@ -12,9 +12,7 @@ class ChangePage extends ChangeNotifier {
   }
 
   int get getIndex => _index;
-  // String get title {
-
-  // }
+  String get getTitle => listPage.firstWhere((p) => p.index == _index).title;
 
   MyPage getCurrentPage(int index) {
     return listPage.firstWhere((page) => page.index == index);
