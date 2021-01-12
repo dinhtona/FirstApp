@@ -9,6 +9,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ChangePage _provider = Provider.of<ChangePage>(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ChangePage>(create: (_) => ChangePage()),
@@ -41,9 +42,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                 //   builder: (context, texto, child) => Text(texto),
                 // )
                 Text(
-                  Provider.of<ChangePage>(context, listen: true)
-                      .getTitle
-                      .toString(),
+                  _provider.getTitle,
                   style: TextStyle(
                     fontSize: 50,
                     fontStyle: FontStyle.italic,

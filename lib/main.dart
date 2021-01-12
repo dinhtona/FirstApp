@@ -69,6 +69,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
+          drawer: Drawer(),
           extendBody: true,
           appBar: BaseAppBar(),
           bottomNavigationBar: BottomBar2(),
