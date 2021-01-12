@@ -1,4 +1,5 @@
-import 'package:FirstApp/Models/CurrentPageModel.dart';
+import 'package:FirstApp/NavigationBottomBar/ChangePage.dart';
+import 'package:FirstApp/NavigationBottomBar/MetaData.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,8 @@ class _BottomBar2State extends State<BottomBar2> {
 
   @override
   Widget build(BuildContext context) {
+    List lstPage = listPage;
+
     //Set color for Bottom Bar
     return Theme(
       data: Theme.of(context).copyWith(
@@ -27,7 +30,7 @@ class _BottomBar2State extends State<BottomBar2> {
           primaryColor: Colors.red,
           textTheme: Theme.of(context)
               .textTheme
-              .copyWith(caption: new TextStyle(color: Colors.yellow))),
+              .copyWith(caption: new TextStyle(color: Colors.white))),
       child: BottomAppBar(
         shape: CircularNotchedRectangle(),
         clipBehavior: Clip.antiAliasWithSaveLayer, //Bo góc nav
@@ -37,19 +40,16 @@ class _BottomBar2State extends State<BottomBar2> {
           // elevation: 5.0,
           type: BottomNavigationBarType.fixed, //Căn đều bottom bar item
           // backgroundColor: Colors.blueAccent,
-          // selectedItemColor: Colors.blueAccent,
+          selectedItemColor: Colors.pinkAccent,
           // unselectedItemColor: Colors.red,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home_work), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.home_work), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.home_work), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.home_work), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.home_work), label: 'Home'),
-          ],
+          items: lstPage
+              .map((page) =>
+                  BottomNavigationBarItem(icon: page.icon, label: page.label))
+              .toList(),
           onTap: (index) {
             print(index);
-            var counter = context.read<CurrentPageModel>();
-            counter.changeIndex(index);
+            var selectedPage = context.read<ChangePage>();
+            selectedPage.changePage(index);
             setState(() {
               _currentindex = index;
             });

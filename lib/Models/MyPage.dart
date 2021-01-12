@@ -11,41 +11,51 @@ import 'package:flutter/material.dart';
 ///
 /// For simplicity, the catalog is expected to be immutable (no products are
 /// expected to be added, removed or changed during the execution of the app).
-class PageModel {
-  static List<String> itemNames = [
-    'Trang Chủ',
-    'Trang mượn',
-    'Trang không yêu anh',
-    'Trang gì kệ nó',
-  ];
+// class PageModel {
+//   static List<String> itemNames = [
+//     'Trang Chủ',
+//     'Trang mượn',
+//     'Trang không yêu anh',
+//     'Trang gì kệ nó',
+//   ];
 
-  /// Get item by [id].
-  ///
-  /// In this sample, the catalog is infinite, looping over [itemNames].
-  MyPage getById(int id) => MyPage(id, itemNames[id % itemNames.length]);
+//   /// Get item by [id].
+//   ///
+//   /// In this sample, the catalog is infinite, looping over [itemNames].
+//   MyPage getById(int id, String name) => MyPage(id, name);
 
-  /// Get item by its position in the catalog.
-  MyPage getByPosition(int position) {
-    // In this simplified case, an item's position in the catalog
-    // is also its id.
-    return getById(position);
-  }
-}
+//   /// Get item by its position in the catalog.
+//   MyPage getByPosition(int position) {
+//     // In this simplified case, an item's position in the catalog
+//     // is also its id.
+//     return getById(position);
+//   }
+// }
 
 @immutable
 class MyPage {
   final int id;
-  final String name;
+  final String _title;
+  final String _label;
   final Color color;
+  final Icon _icon;
   final int price = 42;
 
-  MyPage(this.id, this.name)
+  MyPage(this.id, this._icon, this._title, this._label)
       // To make the sample app look nicer, each item is given one of the
       // Material Design primary colors.
       : color = Colors.primaries[id % Colors.primaries.length];
 
   @override
   int get hashCode => id;
+
+  int get index => id;
+
+  String get title => _title;
+
+  String get label => _label;
+
+  Icon get icon => _icon;
 
   @override
   bool operator ==(Object other) => other is MyPage && other.id == id;
