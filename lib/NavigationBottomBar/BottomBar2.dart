@@ -47,6 +47,7 @@ class _BottomBar2State extends State<BottomBar2> {
                   BottomNavigationBarItem(icon: page.icon, label: page.label))
               .toList(),
           onTap: (index) {
+            if (index == 2) return;
             print(index);
             var selectedPage = context.read<ChangePage>();
             selectedPage.changePage(index);
