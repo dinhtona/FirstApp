@@ -184,14 +184,18 @@ class DrawerLeft extends StatelessWidget {
           // ),
           otherAccountsPictures: [
             CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.white,
+              // radius: 40,
+              backgroundColor: Colors.blueGrey[300],
               child: Padding(
                 padding: EdgeInsets.all(2.0),
                 child: CircleAvatar(
+                  backgroundColor: Colors.white,
                   radius: 38,
                   backgroundImage:
                       NetworkImage("https://www.laptrinhvb.net/logo.png"),
+                  onBackgroundImageError: (_dynamic, _stacktrace) {
+                    print("ERROR: ");
+                  },
                 ),
               ),
             ),
@@ -209,12 +213,13 @@ class DrawerLeft extends StatelessWidget {
             // ),
           ],
           currentAccountPicture: CircleAvatar(
-            radius: 100,
+            // radius: 100,
             backgroundColor: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(2.0),
               child: CircleAvatar(
                 radius: 50,
+                backgroundColor: Colors.transparent,
                 backgroundImage: NetworkImage(
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ps8TZRyIWb6SoQdrElDc0BWnkwI9p0TiSQ&usqp=CAU",
                 ),
