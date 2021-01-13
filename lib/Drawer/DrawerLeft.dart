@@ -13,25 +13,40 @@ class DrawerLeft extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             _createHeader(context),
-            _createDrawerItem(
-              icon: Icons.contacts,
-              text: 'Contacts',
-            ),
-            _createDrawerItem(
-              icon: Icons.event,
-              text: 'Events',
-            ),
-            _createDrawerItem(
-              icon: Icons.note,
-              text: 'Notes',
-            ),
-            Divider(),
-            _createDrawerItem(icon: Icons.collections_bookmark, text: 'Steps'),
-            _createDrawerItem(icon: Icons.face, text: 'Authors'),
+            _createDrawerItem(icon: Icons.stars, text: 'Useful Links'),
+            ExpansionTile(
+                title: Text('Làm đẹp'),
+                childrenPadding: EdgeInsets.only(left: 20),
+                //tilePadding: EdgeInsets.only(left: 10),
+                initiallyExpanded: true,
+                leading: Icon(Icons.favorite),
+                children: <Widget>[
+                  _createDrawerItem(
+                    icon: Icons.contacts,
+                    text: 'Contacts',
+                  ),
+                  _createDrawerItem(
+                    icon: Icons.event,
+                    text: 'Events',
+                  ),
+                  _createDrawerItem(
+                    icon: Icons.note,
+                    text: 'Notes',
+                  ),
+                ]),
+            ExpansionTile(
+                title: Text('Vui chơi'),
+                childrenPadding: EdgeInsets.only(left: 20),
+                //tilePadding: EdgeInsets.only(left: 10),
+                initiallyExpanded: true,
+                leading: Icon(Icons.airline_seat_recline_extra),
+                children: <Widget>[
+                  _createDrawerItem(
+                      icon: Icons.collections_bookmark, text: 'Steps'),
+                  _createDrawerItem(icon: Icons.face, text: 'Authors'),
+                ]),
             _createDrawerItem(
                 icon: Icons.account_box, text: 'Flutter Documentation'),
-            _createDrawerItem(icon: Icons.stars, text: 'Useful Links'),
-            Divider(),
             _createDrawerItem(icon: Icons.bug_report, text: 'Report an issue'),
             ListTile(
               title: Text('0.0.1'),
@@ -43,6 +58,31 @@ class DrawerLeft extends StatelessWidget {
       ),
     );
     // Add a Drawer here in the next step.
+  }
+
+  Widget _groupedListTitle(List<Widget> lst) {
+    ExpansionTile(
+      title: Text('System'),
+      childrenPadding: EdgeInsets.only(left: 20),
+      //tilePadding: EdgeInsets.only(left: 10),
+      initiallyExpanded: true,
+      leading: Icon(Icons.settings),
+      children: lst,
+      // children: <Widget>[
+      //   _createDrawerItem(
+      //     icon: Icons.contacts,
+      //     text: 'Contacts',
+      //   ),
+      //   _createDrawerItem(
+      //     icon: Icons.event,
+      //     text: 'Events',
+      //   ),
+      //   _createDrawerItem(
+      //     icon: Icons.note,
+      //     text: 'Notes',
+      //   ),
+      // ]
+    );
   }
 
   Widget _createDrawerItem(
@@ -79,19 +119,19 @@ class DrawerLeft extends StatelessWidget {
           },
           blendMode: BlendMode.darken,
           child: Container(
-            child: BlurHash(
-              hash: 'LFK2E,-,0JRQ02^%$+RRVBxB^-sq',
-              image: 'https://laptrinhvb.net/logo.png',
-              // image: stringCommon['drawer_bg'],
-              imageFit: BoxFit.cover, 
-              
+            //   child: BlurHash(
+            //     hash: 'LFK2E,-,0JRQ02^%$+RRVBxB^-sq',
+            //     image: 'https://laptrinhvb.net/logo.png',
+            //     // image: stringCommon['drawer_bg'],
+            //     imageFit: BoxFit.cover,
+
+            //   ),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: ExactAssetImage(stringCommon['drawer_bg']),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter),
             ),
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //       image: ExactAssetImage(stringCommon['drawer_bg']),
-            //       fit: BoxFit.cover,
-            //       alignment: Alignment.topCenter),
-            // ),
           ),
         ),
         Positioned(
