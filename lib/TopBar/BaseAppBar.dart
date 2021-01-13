@@ -44,7 +44,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Text(
                   _provider.getTitle,
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 30,
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w600,
                     // color: Colors.white,
@@ -69,5 +69,5 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(50);
 }
