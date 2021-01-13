@@ -16,7 +16,7 @@ class DrawerLeft extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               SizedBox(
-                height: 180,
+                height: 190,
                 child: _createHeader(context),
               ),
               Expanded(
@@ -137,13 +137,6 @@ class DrawerLeft extends StatelessWidget {
           },
           blendMode: BlendMode.darken,
           child: Container(
-            //   child: BlurHash(
-            //     hash: 'LFK2E,-,0JRQ02^%$+RRVBxB^-sq',
-            //     image: 'https://laptrinhvb.net/logo.png',
-            //     // image: stringCommon['drawer_bg'],
-            //     imageFit: BoxFit.cover,
-
-            //   ),
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: ExactAssetImage(stringCommon['drawer_bg']),
@@ -157,13 +150,18 @@ class DrawerLeft extends StatelessWidget {
           left: 20.0,
           child: Text(
             stringCommon['appName'],
+            textAlign: TextAlign.right,
             style: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontWeight: FontWeight.w500),
+              color: Colors.white,
+              fontSize: 20.0,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
         UserAccountsDrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+          ),
           // margin: EdgeInsets.only(bottom: 0),
           accountName: Text(
             "SON GO KU",
@@ -193,22 +191,22 @@ class DrawerLeft extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 38,
                   backgroundImage: NetworkImage(
-                      "https://avatarfiles.alphacoders.com/558/55871.png"),
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ps8TZRyIWb6SoQdrElDc0BWnkwI9p0TiSQ&usqp=CAU"),
                 ),
               ),
             ),
-            CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.white,
-              child: Padding(
-                padding: EdgeInsets.all(2.0),
-                child: CircleAvatar(
-                  radius: 38,
-                  backgroundImage: NetworkImage(
-                      "https://i1.sndcdn.com/avatars-000083247059-ocdcqj-t500x500.jpg"),
-                ),
-              ),
-            ),
+            // CircleAvatar(
+            //   radius: 40,
+            //   backgroundColor: Colors.white,
+            //   child: Padding(
+            //     padding: EdgeInsets.all(2.0),
+            //     child: CircleAvatar(
+            //       radius: 38,
+            //       backgroundImage: NetworkImage(
+            //           "https://i1.sndcdn.com/avatars-000083247059-ocdcqj-t500x500.jpg"),
+            //     ),
+            //   ),
+            // ),
           ],
           currentAccountPicture: CircleAvatar(
             radius: 100,
@@ -218,7 +216,7 @@ class DrawerLeft extends StatelessWidget {
               child: CircleAvatar(
                 radius: 50,
                 backgroundImage: NetworkImage(
-                  "https://i1.sndcdn.com/avatars-000272285088-bbpvne-t500x500.jpg",
+                  "https://www.cesarsway.com/wp-content/uploads/2019/10/AdobeStock_190562703.jpeg",
                 ),
               ),
             ),
