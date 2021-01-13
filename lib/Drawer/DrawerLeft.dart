@@ -190,8 +190,8 @@ class DrawerLeft extends StatelessWidget {
                 padding: EdgeInsets.all(2.0),
                 child: CircleAvatar(
                   radius: 38,
-                  backgroundImage: NetworkImage(
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ps8TZRyIWb6SoQdrElDc0BWnkwI9p0TiSQ&usqp=CAU"),
+                  backgroundImage:
+                      NetworkImage("https://www.laptrinhvb.net/logo.png"),
                 ),
               ),
             ),
@@ -216,7 +216,7 @@ class DrawerLeft extends StatelessWidget {
               child: CircleAvatar(
                 radius: 50,
                 backgroundImage: NetworkImage(
-                  "https://www.cesarsway.com/wp-content/uploads/2019/10/AdobeStock_190562703.jpeg",
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ps8TZRyIWb6SoQdrElDc0BWnkwI9p0TiSQ&usqp=CAU",
                 ),
               ),
             ),
