@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:FirstApp/Common/Strings.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 
 class DrawerLeft extends StatelessWidget {
   @override
@@ -11,20 +12,32 @@ class DrawerLeft extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            _createHeader2(context),
-            ListTile(
-              title: Text('ITEM 1'),
-              onTap: () {
-                print('Tap to Item 1');
-              },
+            _createHeader(context),
+            _createDrawerItem(
+              icon: Icons.contacts,
+              text: 'Contacts',
+            ),
+            _createDrawerItem(
+              icon: Icons.event,
+              text: 'Events',
+            ),
+            _createDrawerItem(
+              icon: Icons.note,
+              text: 'Notes',
             ),
             Divider(),
+            _createDrawerItem(icon: Icons.collections_bookmark, text: 'Steps'),
+            _createDrawerItem(icon: Icons.face, text: 'Authors'),
+            _createDrawerItem(
+                icon: Icons.account_box, text: 'Flutter Documentation'),
+            _createDrawerItem(icon: Icons.stars, text: 'Useful Links'),
+            Divider(),
+            _createDrawerItem(icon: Icons.bug_report, text: 'Report an issue'),
             ListTile(
-              title: Text('ITEM 2'),
-              onTap: () {
-                print('Item 2 taped !');
-              },
-            )
+              title: Text('0.0.1'),
+              onTap: () {},
+            ),
+            Divider(),
           ],
         ),
       ),
@@ -32,7 +45,23 @@ class DrawerLeft extends StatelessWidget {
     // Add a Drawer here in the next step.
   }
 
-  Widget _createHeader2(BuildContext context) {
+  Widget _createDrawerItem(
+      {IconData icon, String text, GestureTapCallback onTap}) {
+    return ListTile(
+      title: Row(
+        children: <Widget>[
+          Icon(icon),
+          Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(text),
+          )
+        ],
+      ),
+      onTap: onTap,
+    );
+  }
+
+  Widget _createHeader(BuildContext context) {
     Color gradientStart = Colors.transparent;
     Color gradientEnd = Colors.black.withOpacity(0.9);
 
@@ -50,12 +79,19 @@ class DrawerLeft extends StatelessWidget {
           },
           blendMode: BlendMode.darken,
           child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: ExactAssetImage(stringCommon['drawer_bg']),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter),
+            child: BlurHash(
+              hash: 'LFK2E,-,0JRQ02^%$+RRVBxB^-sq',
+              image: 'https://laptrinhvb.net/logo.png',
+              // image: stringCommon['drawer_bg'],
+              imageFit: BoxFit.cover, 
+              
             ),
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //       image: ExactAssetImage(stringCommon['drawer_bg']),
+            //       fit: BoxFit.cover,
+            //       alignment: Alignment.topCenter),
+            // ),
           ),
         ),
         Positioned(
