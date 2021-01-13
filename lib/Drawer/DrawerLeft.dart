@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:FirstApp/Common/Strings.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class DrawerLeft extends StatelessWidget {
   @override
@@ -184,18 +186,40 @@ class DrawerLeft extends StatelessWidget {
           // ),
           otherAccountsPictures: [
             CircleAvatar(
-              // radius: 40,
-              backgroundColor: Colors.blueGrey[300],
+              radius: 40,
+              backgroundColor: Colors.white,
               child: Padding(
                 padding: EdgeInsets.all(2.0),
                 child: CircleAvatar(
-                  backgroundColor: Colors.white,
                   radius: 38,
-                  backgroundImage:
-                      NetworkImage("https://www.laptrinhvb.net/logo.png"),
-                  onBackgroundImageError: (_dynamic, _stacktrace) {
-                    print("ERROR: ");
-                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      width: 34,
+                      height: 34,
+                      child: Stack(
+                        children: <Widget>[
+                          Center(
+                              child: Container(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              backgroundColor: Colors.white,
+                            ),
+                          )),
+                          Center(
+                            child: FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: 'https://laptrinhvb.net/logo.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // backgroundImage: NetworkImage(
+                  //     "https://avatarfiles.alphacoders.com/558/55871.png"),
                 ),
               ),
             ),
