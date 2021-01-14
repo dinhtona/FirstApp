@@ -141,7 +141,7 @@ class DrawerLeft extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: ExactAssetImage(stringCommon['drawer_bg']),
+                  image: ExactAssetImage(StringCommon.drawer_bg),
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter),
             ),
@@ -151,7 +151,7 @@ class DrawerLeft extends StatelessWidget {
           bottom: 10.0,
           left: 20.0,
           child: Text(
-            stringCommon['appName'],
+            StringCommon.appName,
             textAlign: TextAlign.right,
             style: TextStyle(
               color: Colors.white,
@@ -185,73 +185,106 @@ class DrawerLeft extends StatelessWidget {
           //   //         "https://c4.wallpaperflare.com/wallpaper/379/942/360/dragon-ball-dragon-ball-super-wallpaper-preview.jpg")),
           // ),
           otherAccountsPictures: [
-            CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.white,
-              child: Padding(
-                padding: EdgeInsets.all(2.0),
-                child: CircleAvatar(
-                  radius: 38,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      width: 34,
-                      height: 34,
-                      child: Stack(
-                        children: <Widget>[
-                          Center(
-                              child: Container(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              backgroundColor: Colors.white,
-                            ),
-                          )),
-                          Center(
-                            child: FadeInImage.memoryNetwork(
-                              placeholder: kTransparentImage,
-                              image: 'https://laptrinhvb.net/logo.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // backgroundImage: NetworkImage(
-                  //     "https://avatarfiles.alphacoders.com/558/55871.png"),
-                ),
-              ),
-            ),
             // CircleAvatar(
-            //   radius: 40,
+            //   // radius: 40,
             //   backgroundColor: Colors.white,
             //   child: Padding(
             //     padding: EdgeInsets.all(2.0),
             //     child: CircleAvatar(
-            //       radius: 38,
-            //       backgroundImage: NetworkImage(
-            //           "https://i1.sndcdn.com/avatars-000083247059-ocdcqj-t500x500.jpg"),
+            //       // radius: 38,
+            //       child: ClipRRect(
+            //         // borderRadius: BorderRadius.circular(1000),
+            //         child: Container(
+            //           // width: 34,
+            //           // height: 34,
+            //           child: Stack(
+            //             children: <Widget>[
+            //               Center(
+            //                   child: Container(
+            //                 width: 20,
+            //                 height: 20,
+            //                 child: CircularProgressIndicator(
+            //                   backgroundColor: Colors.white,
+            //                 ),
+            //               )),
+            //               Center(
+            //                 child: FadeInImage.memoryNetwork(
+            //                   placeholder: kTransparentImage,
+            //                   image: 'https://laptrinhvb.net/logo.png',
+            //                   fit: BoxFit.fill,
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ),
             //     ),
             //   ),
             // ),
+            circleLoadingAvatar(40, 25,
+                'https://i.pinimg.com/originals/17/89/d9/1789d994f2b657e88edbee62d77e7f63.jpg'),
           ],
-          currentAccountPicture: CircleAvatar(
-            // radius: 100,
-            backgroundColor: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.transparent,
-                backgroundImage: NetworkImage(
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ps8TZRyIWb6SoQdrElDc0BWnkwI9p0TiSQ&usqp=CAU",
-                ),
-              ),
-            ),
-          ),
+          currentAccountPicture: circleLoadingAvatar(100, 50,
+              'https://i1.sndcdn.com/avatars-000560768412-fgpz9h-t500x500.jpg'),
+          // CircleAvatar(
+          //   // radius: 100,
+          //   backgroundColor: Colors.white,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(2.0),
+          //     child: CircleAvatar(
+          //       radius: 50,
+          //       backgroundColor: Colors.transparent,
+          //       backgroundImage: NetworkImage(
+          //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ps8TZRyIWb6SoQdrElDc0BWnkwI9p0TiSQ&usqp=CAU",
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ),
       ]),
     );
   }
+}
+
+CircleAvatar circleLoadingAvatar(
+    double circleSize, double loadingCircleSize, String url) {
+  return CircleAvatar(
+    radius: circleSize,
+    backgroundColor: Colors.white,
+    child: Padding(
+      padding: EdgeInsets.all(2.0),
+      child: CircleAvatar(
+        radius: circleSize,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(circleSize),
+          child: Container(
+            width: circleSize,
+            height: circleSize,
+            child: Stack(
+              children: <Widget>[
+                Center(
+                    child: Container(
+                  width: loadingCircleSize,
+                  height: loadingCircleSize,
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                  ),
+                )),
+                Center(
+                  child: FadeInImage.memoryNetwork(
+                    alignment: Alignment.center,
+                    placeholder: kTransparentImage,
+                    image: url,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        // backgroundImage: NetworkImage(
+        // "https://i1.sndcdn.com/avatars-000083247059-ocdcqj-t500x500.jpg"),
+      ),
+    ),
+  );
 }
