@@ -50,7 +50,7 @@ class DrawerLeft extends StatelessWidget {
                         title: Text('Vui chơi'),
                         childrenPadding: EdgeInsets.only(left: 20),
                         //tilePadding: EdgeInsets.only(left: 10),
-                        initiallyExpanded: true,
+                        initiallyExpanded: false,
                         leading: Icon(Icons.airline_seat_recline_extra),
                         children: <Widget>[
                           _createDrawerItem(
@@ -75,31 +75,6 @@ class DrawerLeft extends StatelessWidget {
           ),
     );
     // Add a Drawer here in the next step.
-  }
-
-  Widget _groupedListTitle(List<Widget> lst) {
-    ExpansionTile(
-      title: Text('System'),
-      childrenPadding: EdgeInsets.only(left: 20),
-      //tilePadding: EdgeInsets.only(left: 10),
-      initiallyExpanded: true,
-      leading: Icon(Icons.settings),
-      children: lst,
-      // children: <Widget>[
-      //   _createDrawerItem(
-      //     icon: Icons.contacts,
-      //     text: 'Contacts',
-      //   ),
-      //   _createDrawerItem(
-      //     icon: Icons.event,
-      //     text: 'Events',
-      //   ),
-      //   _createDrawerItem(
-      //     icon: Icons.note,
-      //     text: 'Notes',
-      //   ),
-      // ]
-    );
   }
 
   Widget _createDrawerItem(
