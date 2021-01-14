@@ -1,10 +1,17 @@
 import 'package:FirstApp/Drawer/DrawerLeft.dart';
 import 'package:FirstApp/NavigationBottomBar/BottomBar2.dart';
-import 'package:FirstApp/NavigationBottomBar/ChangePage.dart';
+import 'package:FirstApp/NavigationBottomBar/ChangePageProvider.dart';
 import 'package:FirstApp/Screens/page1.dart';
 import 'package:FirstApp/Screens/page2.dart';
 import 'package:FirstApp/Screens/page3.dart';
 import 'package:FirstApp/Screens/page4.dart';
+import 'package:FirstApp/Screens/page5.dart';
+import 'package:FirstApp/Screens/page6.dart';
+import 'package:FirstApp/Screens/page7.dart';
+import 'package:FirstApp/Screens/page8.dart';
+import 'package:FirstApp/Screens/page9.dart';
+import 'package:FirstApp/Screens/page10.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +46,8 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<ChangePage>(create: (_) => ChangePage()),
+        ChangeNotifierProvider<ChangePageProvider>(
+            create: (_) => ChangePageProvider()),
         // Provider<SomethingElse>(create: (_) => SomethingElse()),
         // Provider<AnotherThing>(create: (_) => AnotherThing()),
       ],
@@ -55,21 +63,9 @@ class MyApp extends StatelessWidget {
                 // and retrieves its model (Counter, in this case).
                 // Then it uses that model to build widgets, and will trigger
                 // rebuilds if the model is updated.
-                Consumer<ChangePage>(
-                  builder: (context, counter, child) {
-                    if (counter.getIndex == 0) {
-                      print(counter.getIndex);
-                      return Page1();
-                    } else if (counter.getIndex == 1) {
-                      print(counter.getIndex);
-                      return Page2();
-                    } else if (counter.getIndex == 3) {
-                      print(counter.getIndex);
-                      return Page3();
-                    } else {
-                      print(counter.getIndex);
-                      return Page4();
-                    }
+                Consumer<ChangePageProvider>(
+                  builder: (context, page, child) {
+                    return _getPage(page.getIndex);
                   },
                 ),
               ],
@@ -95,5 +91,91 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _getPage(int index) {
+    switch (index) {
+      case 0:
+        {
+          print(index);
+          return Page1();
+        }
+        break;
+
+      case 1:
+        {
+          print(index);
+          return Page2();
+        }
+        break;
+
+      case 2:
+        {
+          print(index);
+          return Page3();
+        }
+        break;
+
+      case 3:
+        {
+          print(index);
+          return Page4();
+        }
+        break;
+
+      case 4:
+        {
+          print(index);
+          return Page5();
+        }
+        break;
+
+      case 5:
+        {
+          print(index);
+          return Page6();
+        }
+        break;
+
+      case 6:
+        {
+          print(index);
+          return Page7();
+        }
+        break;
+
+      case 7:
+        {
+          print(index);
+          return Page8();
+        }
+        break;
+
+      case 8:
+        {
+          print(index);
+          return Page9();
+        }
+        break;
+
+      case 9:
+        {
+          print(index);
+          return Page10();
+        }
+        break;
+      case 10:
+        {
+          print(index);
+          return Page1();
+        }
+        break;
+      default:
+        {
+          print('Default: ' + index.toString());
+          return Page1();
+        }
+        break;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:FirstApp/NavigationBottomBar/ChangePage.dart';
+import 'package:FirstApp/NavigationBottomBar/ChangePageProvider.dart';
 import 'package:FirstApp/NavigationBottomBar/MetaData.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +49,7 @@ class _BottomBar2State extends State<BottomBar2> {
           onTap: (index) {
             if (index == 2) return;
             print(index);
-            var selectedPage = context.read<ChangePage>();
+            var selectedPage = context.read<ChangePageProvider>();
             selectedPage.changePage(index);
             setState(() {
               _currentindex = index;

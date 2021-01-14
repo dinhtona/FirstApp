@@ -1,4 +1,4 @@
-import 'package:FirstApp/NavigationBottomBar/ChangePage.dart';
+import 'package:FirstApp/NavigationBottomBar/ChangePageProvider.dart';
 import 'package:FirstApp/NavigationBottomBar/MetaData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -9,10 +9,12 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ChangePage _provider = Provider.of<ChangePage>(context);
+    final ChangePageProvider _provider =
+        Provider.of<ChangePageProvider>(context);
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<ChangePage>(create: (_) => ChangePage()),
+        ChangeNotifierProvider<ChangePageProvider>(
+            create: (_) => ChangePageProvider()),
         // Provider<SomethingElse>(create: (_) => SomethingElse()),
         // Provider<AnotherThing>(create: (_) => AnotherThing()),
       ],

@@ -39,9 +39,9 @@ class MyPage {
   final String _label;
   final Color color;
   final Icon _icon;
-  final int price = 42;
+  final int _groupID;
 
-  MyPage(this.id, this._icon, this._title, this._label)
+  MyPage(this.id, this._icon, this._title, this._label, this._groupID)
       // To make the sample app look nicer, each item is given one of the
       // Material Design primary colors.
       : color = Colors.primaries[id % Colors.primaries.length];
@@ -56,6 +56,7 @@ class MyPage {
   String get label => _label;
 
   Icon get icon => _icon;
+  int get groupID => _groupID;
 
   @override
   bool operator ==(Object other) => other is MyPage && other.id == id;
