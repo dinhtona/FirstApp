@@ -124,7 +124,8 @@ class _HomeScreenState extends State<HomeScreen> {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
-          backgroundColor: themeNotifier.getPrimaryColor(),
+          // backgroundColor: themeNotifier.getPrimaryColor(),
+          backgroundColor: Colors.transparent,
           unselectedItemColor: Colors.white,
           selectedItemColor: Colors.yellow.shade500,
           // showUnselectedLabels: false,
