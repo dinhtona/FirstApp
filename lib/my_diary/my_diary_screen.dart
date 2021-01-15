@@ -246,10 +246,10 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                // padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'My Diary',
+                                  'TONA 5c',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,

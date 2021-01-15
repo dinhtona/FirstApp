@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TONA',
       debugShowCheckedModeBanner: false,
+      
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: AppTheme.textTheme,

@@ -179,7 +179,7 @@ class _DrawerUserControllerState extends State<DrawerUserController>
                                     : AnimatedIcon(
                                         icon: widget.animatedIconData != null
                                             ? widget.animatedIconData
-                                            : AnimatedIcons.arrow_menu,
+                                            : null,
                                         progress: iconAnimationController),
                               ),
                               onTap: () {
@@ -203,17 +203,18 @@ class _DrawerUserControllerState extends State<DrawerUserController>
   }
 
   void onDrawerClick() {
+    print('onDrawerClick()');
     //if scrollcontroller.offset != 0.0 then we set to closed the drawer(with animation to offset zero position) if is not 1 then open the drawer
     if (scrollController.offset != 0.0) {
       scrollController.animateTo(
         0.0,
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.fastOutSlowIn,
       );
     } else {
       scrollController.animateTo(
         widget.drawerWidth,
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.fastOutSlowIn,
       );
     }
