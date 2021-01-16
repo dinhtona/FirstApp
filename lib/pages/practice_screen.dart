@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class Practice extends StatefulWidget {
@@ -19,24 +21,18 @@ class _PracticeState extends State<Practice> {
         });
       },
       child: Center(
-          child: AnimatedContainer(
-        //Hoạt ảnh các đối tượng
-        //
-        width: selected ? 200 : 100,
-        height: !selected ? 200 : 100,
-        color: selected ? Colors.greenAccent : Colors.yellow,
-        alignment: selected
-            ? Alignment.center
-            : AlignmentDirectional
-                .topCenter, //Chỉ có tác dụng đối với các thực thể bên trong (child)
-        duration: Duration(milliseconds: 1000), //Tốc độ chuyển động
-        // curve: Curves.easeInBack, //Mô tả chuyển động
-        child: Icon(Icons.access_alarms),
-        // child: FlutterLogo(
-        //   size: 75,
-        //   duration: Duration(milliseconds: 600), //Không tác dụng
-        //   textColor: Colors.red, //Không tác dụng
-        // ),
+          child: Stack(
+        children: [
+          AnimatedOpacity(
+            //Hoạt ảnh của Opacity: Thay đổi từ từ độ sáng tối của hình ảnh
+            duration: Duration(seconds: 2),
+            curve: Curves.fastOutSlowIn,
+            opacity: selected ? 1 : 0.2,
+            child: Image.network(
+              'https://raw.githubusercontent.com/flutter/assets-for-api-docs/master/packages/diagrams/assets/blend_mode_destination.jpeg',
+            ),
+          ),
+        ],
       )),
     );
   }
