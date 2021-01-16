@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:FirstApp/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'navigation_home_screen.dart';
 
 void main() async {
@@ -25,9 +26,10 @@ class MyApp extends StatelessWidget {
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp(
+      localizationsDelegates: [GlobalMaterialLocalizations.delegate],
+      supportedLocales: [const Locale('en'), const Locale('vi')],
       title: 'TONA',
       debugShowCheckedModeBanner: false,
-      
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: AppTheme.textTheme,

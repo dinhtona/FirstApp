@@ -61,8 +61,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
 
     listViews.add(
       TitleView(
-        titleTxt: 'Mediterranean diet',
-        subTxt: 'Details',
+        titleTxt: 'Thống kê doanh thu',
+        subTxt: 'Chi tiết',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -81,8 +81,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
     listViews.add(
       TitleView(
-        titleTxt: 'Meals today',
-        subTxt: 'Customize',
+        titleTxt: 'Các khoản thu chi',
+        subTxt: 'Thiết lập',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -292,16 +292,39 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                       size: 18,
                                     ),
                                   ),
-                                  Text(
-                                    '15 May',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontFamily: AppTheme.fontName,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 18,
-                                      letterSpacing: -0.2,
-                                      color: AppTheme.darkerText,
+                                  InkWell(
+                                    child: Text(
+                                      '15-05',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: AppTheme.fontName,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 18,
+                                        letterSpacing: -0.2,
+                                        color: AppTheme.darkerText,
+                                      ),
                                     ),
+                                    onTap: () {
+                                      Future<DateTime> future = showDatePicker(
+                                        context: context,
+                                        locale: const Locale("vi", "VI"),
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(2018),
+                                        lastDate: DateTime(2030),
+                                        builder: (BuildContext context,
+                                            Widget child) {
+                                          return Theme(
+                                            data: ThemeData.dark(),
+                                            child: child,
+                                          );
+                                        },
+                                        confirmText: 'Chọn',
+                                      );
+                                      future
+                                          .then((value) =>
+                                              print('Value checked: ${value}'))
+                                          .catchError((error) => print(error));
+                                    },
                                   ),
                                 ],
                               ),
@@ -336,3 +359,5 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
   }
 }
+
+Future<DateTime> getFuture() {}

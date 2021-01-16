@@ -1,13 +1,13 @@
 import 'package:FirstApp/app_theme.dart';
 import 'package:FirstApp/custom_drawer/drawer_user_controller.dart';
 import 'package:FirstApp/custom_drawer/home_drawer.dart';
-import 'package:FirstApp/feedback_screen.dart';
-import 'package:FirstApp/help_screen.dart';
+import 'package:FirstApp/pages/feedback_screen.dart';
+import 'package:FirstApp/pages/help_screen.dart';
 
-import 'package:FirstApp/invite_friend_screen.dart';
+import 'package:FirstApp/pages/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'app_home_screen.dart';
+import 'pages/app_home_screen.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
   @override
@@ -35,7 +35,6 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         child: Scaffold(
           backgroundColor: AppTheme.nearlyWhite,
           body: DrawerUserController(
-          
             screenIndex: drawerIndex,
             drawerWidth: MediaQuery.of(context).size.width * 0.75,
             onDrawerCall: (DrawerIndex drawerIndexdata) {

@@ -76,7 +76,7 @@ class MediterranesnDietView extends StatelessWidget {
                                               padding: const EdgeInsets.only(
                                                   left: 4, bottom: 2),
                                               child: Text(
-                                                'Eaten',
+                                                'Thu',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontFamily: AppTheme.fontName,
@@ -123,7 +123,7 @@ class MediterranesnDietView extends StatelessWidget {
                                                       const EdgeInsets.only(
                                                           left: 4, bottom: 3),
                                                   child: Text(
-                                                    'Kcal',
+                                                    'k VND',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
@@ -171,7 +171,7 @@ class MediterranesnDietView extends StatelessWidget {
                                               padding: const EdgeInsets.only(
                                                   left: 4, bottom: 2),
                                               child: Text(
-                                                'Burned',
+                                                'Chi',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontFamily: AppTheme.fontName,
@@ -218,7 +218,7 @@ class MediterranesnDietView extends StatelessWidget {
                                                       const EdgeInsets.only(
                                                           left: 8, bottom: 3),
                                                   child: Text(
-                                                    'Kcal',
+                                                    'k VND',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
