@@ -294,6 +294,7 @@ enum DrawerIndex {
   About,
   Invite,
   Testing,
+  Practice,
 }
 
 class DrawerList {

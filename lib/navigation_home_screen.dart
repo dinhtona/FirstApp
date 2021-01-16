@@ -8,6 +8,7 @@ import 'package:FirstApp/pages/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/app_home_screen.dart';
+import 'pages/practice_screen.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
   @override
@@ -67,6 +68,10 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       } else if (drawerIndex == DrawerIndex.Invite) {
         setState(() {
           screenView = InviteFriend();
+        });
+      } else if (drawerIndex == DrawerIndex.Practice) {
+        setState(() {
+          screenView = Practice();
         });
       } else {
         //do in your way......

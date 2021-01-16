@@ -1,4 +1,5 @@
 import 'package:FirstApp/models/tabIcon_data.dart';
+import 'package:FirstApp/pages/practice_screen.dart';
 import 'package:FirstApp/traning/training_screen.dart';
 import 'package:flutter/material.dart';
 import '../bottom_navigation_view/bottom_bar_view.dart';
@@ -81,7 +82,8 @@ class _AppHomeScreenState extends State<AppHomeScreen>
           tabIconsList: tabIconsList,
           addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
+            if (index == 0) {
+              print('index change: $index');
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -91,7 +93,17 @@ class _AppHomeScreenState extends State<AppHomeScreen>
                       MyDiaryScreen(animationController: animationController);
                 });
               });
-            } else if (index == 1 || index == 3) {
+            } else if (index == 1) {
+              print('index change: $index');
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody = Practice();
+                });
+              });
+            } else if (index == 2) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
