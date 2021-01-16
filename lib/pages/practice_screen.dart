@@ -9,7 +9,17 @@ class Practice extends StatefulWidget {
 }
 
 class _PracticeState extends State<Practice> {
-  bool selected = false;
+  Future<String> _caculation =
+      Future<String>.delayed(Duration(seconds: 5), () => 'Data Loaded');
+  bool start;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      start = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,23 +27,70 @@ class _PracticeState extends State<Practice> {
       //Lắng nghe cử chỉ(onTap, onDoubleTap,...)
       onTap: () {
         setState(() {
-          selected = !selected;
+          start = !start;
         });
       },
-      child: Center(
-          child: Stack(
-        children: [
-          AnimatedOpacity(
-            //Hoạt ảnh của Opacity: Thay đổi từ từ độ sáng tối của hình ảnh
-            duration: Duration(seconds: 2),
-            curve: Curves.fastOutSlowIn,
-            opacity: selected ? 1 : 0.2,
-            child: Image.network(
-              'https://raw.githubusercontent.com/flutter/assets-for-api-docs/master/packages/diagrams/assets/blend_mode_destination.jpeg',
-            ),
-          ),
-        ],
-      )),
+      child: DefaultTextStyle(
+        style: Theme.of(context).textTheme.headline2,
+        child: FutureBuilder<String>(
+          builder: (context, snapshot) {
+            List<Widget> children;
+            if (snapshot.hasData) {
+              children = <Widget>[
+                Icon(
+                  Icons.check_circle_outline,
+                  color: Colors.green,
+                  size: 100,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    'Result: ${snapshot.data}',
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ];
+            } else if (snapshot.hasError) {
+              children = <Widget>[
+                Icon(Icons.error_outline),
+                Padding(
+                    padding: EdgeInsets.only(top: 16),
+                    child: Text('Error: ${snapshot.error}')),
+              ];
+            } else {
+              children = <Widget>[
+                SizedBox(
+                  child: CircularProgressIndicator(),
+                  width: 60,
+                  height: 60,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Text(
+                    'Đang load cha nội... \nChờ xíu đi !!!',
+                    style: TextStyle(fontSize: 40),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ];
+            }
+
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: children,
+              ),
+            );
+          },
+          future: _caculation,
+        ),
+      ),
+      // : Center(
+      //     child: new Container(
+      //       child: Text('Chạy !'),
+      //     ),
+      //   ),
     );
   }
 }
