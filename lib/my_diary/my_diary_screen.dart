@@ -322,7 +322,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                       );
                                       future
                                           .then((value) =>
-                                              print('Value checked: ${value}'))
+                                              print('Value checked: $value'))
                                           .catchError((error) => print(error));
                                     },
                                   ),
