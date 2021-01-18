@@ -60,25 +60,34 @@ class _PracticeState extends State<Practice> with TickerProviderStateMixin {
             start = !start;
           });
         },
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: FloatingActionButton(
-                onPressed: () {},
-                child: Text('Hi !'),
-                backgroundColor: Colors.green,
-              ),
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.all(20),
+            color: Colors.blue,
+            width: MediaQuery.of(context).size.width,
+            height: 400,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: FloatingActionButton(
+                    onPressed: () {},
+                    child: Text('Hi !'),
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: FloatingActionButton(
+                    onPressed: () {},
+                    child: Text('Bye !'),
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+              ],
             ),
-            Align(
-              alignment: Alignment.topRight,
-              child: FloatingActionButton(
-                onPressed: () {},
-                child: Text('Bye !'),
-                backgroundColor: Colors.green,
-              ),
-            ),
-          ],
+          ),
         )
         // Scaffold(
         //   floatingActionButton: FloatingActionButton.extended(
