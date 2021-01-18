@@ -1,70 +1,76 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 
-class Practice extends StatefulWidget {
-  Practice({Key key}) : super(key: key);
+class Practice extends StatelessWidget {
+  List<Widget> _getColumn() {
+    List<Widget> wg = [];
 
-  @override
-  _PracticeState createState() => _PracticeState();
-}
-
-class _PracticeState extends State<Practice> {
-  PageController _pageController;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _pageController = PageController();
+    for (int i = 0; i <= 3; i++) {
+      wg.add(Container(
+        height: 100,
+        width: 100,
+        color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+            .withOpacity(0.7),
+      ));
+    }
+    return wg;
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    _pageController.dispose();
-    super.dispose();
+  List<TableRow> _generateTableRow(int numRow) {
+    List<TableRow> wg = [];
+    for (int i = 0; i <= numRow; i++) {
+      wg.add(TableRow(children: _getColumn()));
+    }
+    return wg;
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: PageView(
-          controller: _pageController,
-          children: [
-            Container(
-              color: Colors.green[300],
-              child: Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_pageController.hasClients) {
-                      _pageController.animateToPage(
-                        1,
-                        duration: const Duration(milliseconds: 900),
-                        curve: Curves.bounceOut,
-                      );
-                    }
-                  },
-                  child: Text('Next'),
-                ),
-              ),
-            ),
-            Container(
-              color: Colors.blue[300],
-              child: Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_pageController.hasClients) {
-                      _pageController.animateToPage(0,
-                          curve: Curves.easeInOut,
-                          duration: const Duration(milliseconds: 300));
-                    }
-                  },
-                  child: Text('Back'),
-                ),
-              ),
-            ),
-          ],
+    // Random random = new Random();
+    List<Widget> _buildCells(int count) {
+      return List.generate(
+        count,
+        (index) => Container(
+          alignment: Alignment.center,
+          width: 120.0,
+          height: 60.0,
+          color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+              .withOpacity(0.7),
+          margin: EdgeInsets.all(4.0),
+          child: Text("${index + 1}", style: Theme.of(context).textTheme.title),
         ),
+      );
+    }
+
+    List<Widget> _buildRows(int count) {
+      return List.generate(
+        count,
+        (index) => Row(
+          children: _buildCells(10),
+        ),
+      );
+    }
+
+    return SingleChildScrollView(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: _buildCells(20),
+          ),
+          Flexible(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: _buildRows(20),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
