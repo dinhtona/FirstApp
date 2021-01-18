@@ -1,103 +1,71 @@
-// import 'dart:ffi';
-
-import 'package:FirstApp/models/tabIcon_data.dart';
 import 'package:flutter/material.dart';
 
 class Practice extends StatefulWidget {
   Practice({Key key}) : super(key: key);
+
   @override
   _PracticeState createState() => _PracticeState();
 }
 
-class _PracticeState extends State<Practice> with TickerProviderStateMixin {
-  //with TickerProviderStateMixin: vsync:this, Với từ khóa with thì mới có thể truyền this vào vsync
-
-  Future<TabIconData> _caculation = Future<TabIconData>.delayed(
-      Duration(seconds: 1), () => TabIconData.tabIconsList[0]);
-  bool start;
-  AnimationController _controller;
-  Animation _animation;
+class _PracticeState extends State<Practice> {
+  PageController _pageController;
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    setState(() {
-      start = false;
-    });
-    _controller = AnimationController(
-      duration: Duration(seconds: 5),
-      vsync: this,
-    );
-    // _controller
-    //   ..animateTo(
-    //     0.9,
-    //     duration: Duration(seconds: 2),
-    //     curve: Curves.easeOutSine,
-    //   );
-
-    _animation = Tween(
-      begin: 0.1,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.bounceInOut,
-    )); //Thêm hiệu ứng vào
+    _pageController = PageController();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _controller.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        //Lắng nghe cử chỉ(onTap, onDoubleTap,...)
-        onTap: () {
-          setState(() {
-            start = !start;
-          });
-        },
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            color: Colors.blue,
-            width: MediaQuery.of(context).size.width,
-            height: 400,
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    child: Text('Hi !'),
-                    backgroundColor: Colors.green,
-                  ),
+    return MaterialApp(
+      home: Scaffold(
+        body: PageView(
+          controller: _pageController,
+          children: [
+            Container(
+              color: Colors.green[300],
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_pageController.hasClients) {
+                      _pageController.animateToPage(
+                        1,
+                        duration: const Duration(milliseconds: 900),
+                        curve: Curves.bounceOut,
+                      );
+                    }
+                  },
+                  child: Text('Next'),
                 ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    child: Text('Bye !'),
-                    backgroundColor: Colors.green,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-        )
-        // Scaffold(
-        //   floatingActionButton: FloatingActionButton.extended(
-        //     onPressed: () {},
-        //     label: Text('Do you like Music'),
-        //     icon: Icon(Icons.audiotrack),
-        //     backgroundColor: Colors.green,
-        //   ),
-        //   floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
-        // ),
-        );
+            Container(
+              color: Colors.blue[300],
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_pageController.hasClients) {
+                      _pageController.animateToPage(0,
+                          curve: Curves.easeInOut,
+                          duration: const Duration(milliseconds: 300));
+                    }
+                  },
+                  child: Text('Back'),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
