@@ -1,5 +1,7 @@
 import 'dart:ffi';
 
+import 'package:FirstApp/models/meals_list_data.dart';
+import 'package:FirstApp/models/tabIcon_data.dart';
 import 'package:flutter/material.dart';
 
 class Practice extends StatefulWidget {
@@ -9,8 +11,8 @@ class Practice extends StatefulWidget {
 }
 
 class _PracticeState extends State<Practice> {
-  Future<String> _caculation =
-      Future<String>.delayed(Duration(seconds: 5), () => 'Data Loaded');
+  Future<TabIconData> _caculation = Future<TabIconData>.delayed(
+      Duration(seconds: 5), () => TabIconData.tabIconsList[0]);
   bool start;
 
   @override
@@ -32,7 +34,7 @@ class _PracticeState extends State<Practice> {
       },
       child: DefaultTextStyle(
         style: Theme.of(context).textTheme.headline2,
-        child: FutureBuilder<String>(
+        child: FutureBuilder<TabIconData>(
           builder: (context, snapshot) {
             List<Widget> children;
             if (snapshot.hasData) {
@@ -44,10 +46,11 @@ class _PracticeState extends State<Practice> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
-                  child: Text(
-                    'Result: ${snapshot.data}',
-                    textAlign: TextAlign.center,
-                  ),
+                  child: Image.asset('${snapshot.data.imagePath}'),
+                  // Text(
+                  //   'Result: ${snapshot.data.imagePath}',
+                  //   textAlign: TextAlign.center,
+                  // ),
                 )
               ];
             } else if (snapshot.hasError) {

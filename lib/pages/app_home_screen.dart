@@ -68,7 +68,7 @@ class _AppHomeScreenState extends State<AppHomeScreen>
   }
 
   Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 0));
+    await Future<dynamic>.delayed(const Duration(milliseconds: 1000));
     return true;
   }
 
