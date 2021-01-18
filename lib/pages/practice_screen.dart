@@ -1,6 +1,5 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 
-import 'package:FirstApp/models/meals_list_data.dart';
 import 'package:FirstApp/models/tabIcon_data.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +9,14 @@ class Practice extends StatefulWidget {
   _PracticeState createState() => _PracticeState();
 }
 
-class _PracticeState extends State<Practice> {
+class _PracticeState extends State<Practice> with TickerProviderStateMixin {
+  //with TickerProviderStateMixin: vsync:this, Với từ khóa with thì mới có thể truyền this vào vsync
+
   Future<TabIconData> _caculation = Future<TabIconData>.delayed(
-      Duration(seconds: 5), () => TabIconData.tabIconsList[0]);
+      Duration(seconds: 2), () => TabIconData.tabIconsList[0]);
   bool start;
+  AnimationController _controller;
+  Animation _animation;
 
   @override
   void initState() {
@@ -21,10 +24,27 @@ class _PracticeState extends State<Practice> {
     setState(() {
       start = false;
     });
+    _controller = AnimationController(
+      duration: Duration(seconds: 5),
+      vsync: this,
+    );
+
+    _animation = Tween(
+      begin: 0.1,
+      end: 1.0,
+    ).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    _controller.forward();
     return GestureDetector(
       //Lắng nghe cử chỉ(onTap, onDoubleTap,...)
       onTap: () {
@@ -46,7 +66,10 @@ class _PracticeState extends State<Practice> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
-                  child: Image.asset('${snapshot.data.imagePath}'),
+                  child: FadeTransition(
+                    opacity: _animation,
+                    child: Image.network('https://laptrinhvb.net/logo.png'),
+                  ),
                   // Text(
                   //   'Result: ${snapshot.data.imagePath}',
                   //   textAlign: TextAlign.center,
@@ -89,11 +112,6 @@ class _PracticeState extends State<Practice> {
           future: _caculation,
         ),
       ),
-      // : Center(
-      //     child: new Container(
-      //       child: Text('Chạy !'),
-      //     ),
-      //   ),
     );
   }
 }
