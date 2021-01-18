@@ -54,78 +54,41 @@ class _PracticeState extends State<Practice> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      //Lắng nghe cử chỉ(onTap, onDoubleTap,...)
-      onTap: () {
-        setState(() {
-          start = !start;
-        });
-      },
-      child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.headline2,
-        child: FutureBuilder<TabIconData>(
-          builder: (context, snapshot) {
-            List<Widget> children;
-            if (snapshot.hasData) {
-              // _controller.animateTo(0.5,
-              //     duration: const Duration(milliseconds: 4),
-              //     curve: Curves.fastOutSlowIn);
-              _controller.forward();
-
-              children = <Widget>[
-                Icon(
-                  Icons.check_circle_outline,
-                  color: Colors.green,
-                  size: 100,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: FadeTransition(
-                    opacity: _animation,
-                    child: Image.network(
-                        'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/05/26191808/can_dogs_eat_pork_hero-500x500.jpg'),
-                  ),
-                  // Text(
-                  //   'Result: ${snapshot.data.imagePath}',
-                  //   textAlign: TextAlign.center,
-                  // ),
-                )
-              ];
-            } else if (snapshot.hasError) {
-              children = <Widget>[
-                Icon(Icons.error_outline),
-                Padding(
-                    padding: EdgeInsets.only(top: 16),
-                    child: Text('Error: ${snapshot.error}')),
-              ];
-            } else {
-              children = <Widget>[
-                SizedBox(
-                  child: CircularProgressIndicator(),
-                  width: 60,
-                  height: 60,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Text(
-                    'Đang load cha nội... \nChờ xíu đi !!!',
-                    style: TextStyle(fontSize: 40),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ];
-            }
-
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: children,
+        //Lắng nghe cử chỉ(onTap, onDoubleTap,...)
+        onTap: () {
+          setState(() {
+            start = !start;
+          });
+        },
+        child: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topLeft,
+              child: FloatingActionButton(
+                onPressed: () {},
+                child: Text('Hi !'),
+                backgroundColor: Colors.green,
               ),
-            );
-          },
-          future: _caculation,
-        ),
-      ),
-    );
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: FloatingActionButton(
+                onPressed: () {},
+                child: Text('Bye !'),
+                backgroundColor: Colors.green,
+              ),
+            ),
+          ],
+        )
+        // Scaffold(
+        //   floatingActionButton: FloatingActionButton.extended(
+        //     onPressed: () {},
+        //     label: Text('Do you like Music'),
+        //     icon: Icon(Icons.audiotrack),
+        //     backgroundColor: Colors.green,
+        //   ),
+        //   floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+        // ),
+        );
   }
 }
