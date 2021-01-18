@@ -29,48 +29,23 @@ class Practice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Random random = new Random();
-    List<Widget> _buildCells(int count) {
-      return List.generate(
-        count,
-        (index) => Container(
-          alignment: Alignment.center,
-          width: 120.0,
-          height: 60.0,
-          color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-              .withOpacity(0.7),
-          margin: EdgeInsets.all(4.0),
-          child: Text("${index + 1}", style: Theme.of(context).textTheme.title),
-        ),
-      );
-    }
 
-    List<Widget> _buildRows(int count) {
-      return List.generate(
-        count,
-        (index) => Row(
-          children: _buildCells(10),
-        ),
-      );
-    }
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(20),
+        child: Table(
+          // columnWidths: {1, FractionColumnWidth(.2)},//Éo xài dc
+          border: TableBorder.all(),
+          defaultVerticalAlignment: TableCellVerticalAlignment.top,
+          defaultColumnWidth: FlexColumnWidth(2.0),
 
-    return SingleChildScrollView(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: _buildCells(20),
-          ),
-          Flexible(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: _buildRows(20),
-              ),
-            ),
-          )
-        ],
+          // IntrinsicColumnWidth(),
+          //FixedColumnWidth(70.0),
+          //FractionColumnWidth(0.5),
+          // FlexColumnWidth(2.0),
+
+          children: _generateTableRow(50),
+        ),
       ),
     );
   }
