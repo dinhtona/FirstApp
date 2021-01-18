@@ -39,10 +39,10 @@ class _DrawerUserControllerState extends State<DrawerUserController>
     animationController = AnimationController(
         duration: const Duration(milliseconds: 2000), vsync: this);
     iconAnimationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 0));
+        vsync: this, duration: const Duration(milliseconds: 2000));
     iconAnimationController
       ..animateTo(1.0,
-          duration: const Duration(milliseconds: 0),
+          duration: const Duration(milliseconds: 2000),
           curve: Curves.fastOutSlowIn);
     scrollController =
         ScrollController(initialScrollOffset: widget.drawerWidth);

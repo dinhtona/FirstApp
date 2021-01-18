@@ -13,7 +13,7 @@ class _PracticeState extends State<Practice> with TickerProviderStateMixin {
   //with TickerProviderStateMixin: vsync:this, Với từ khóa with thì mới có thể truyền this vào vsync
 
   Future<TabIconData> _caculation = Future<TabIconData>.delayed(
-      Duration(seconds: 2), () => TabIconData.tabIconsList[0]);
+      Duration(seconds: 1), () => TabIconData.tabIconsList[0]);
   bool start;
   AnimationController _controller;
   Animation _animation;
@@ -28,11 +28,20 @@ class _PracticeState extends State<Practice> with TickerProviderStateMixin {
       duration: Duration(seconds: 5),
       vsync: this,
     );
+    // _controller
+    //   ..animateTo(
+    //     0.9,
+    //     duration: Duration(seconds: 2),
+    //     curve: Curves.easeOutSine,
+    //   );
 
     _animation = Tween(
       begin: 0.1,
       end: 1.0,
-    ).animate(_controller);
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.bounceInOut,
+    )); //Thêm hiệu ứng vào
   }
 
   @override
@@ -44,7 +53,6 @@ class _PracticeState extends State<Practice> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    _controller.forward();
     return GestureDetector(
       //Lắng nghe cử chỉ(onTap, onDoubleTap,...)
       onTap: () {
@@ -58,6 +66,11 @@ class _PracticeState extends State<Practice> with TickerProviderStateMixin {
           builder: (context, snapshot) {
             List<Widget> children;
             if (snapshot.hasData) {
+              // _controller.animateTo(0.5,
+              //     duration: const Duration(milliseconds: 4),
+              //     curve: Curves.fastOutSlowIn);
+              _controller.forward();
+
               children = <Widget>[
                 Icon(
                   Icons.check_circle_outline,
@@ -68,7 +81,8 @@ class _PracticeState extends State<Practice> with TickerProviderStateMixin {
                   padding: const EdgeInsets.only(top: 16),
                   child: FadeTransition(
                     opacity: _animation,
-                    child: Image.network('https://laptrinhvb.net/logo.png'),
+                    child: Image.network(
+                        'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/05/26191808/can_dogs_eat_pork_hero-500x500.jpg'),
                   ),
                   // Text(
                   //   'Result: ${snapshot.data.imagePath}',
