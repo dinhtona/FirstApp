@@ -246,7 +246,7 @@ class MealsView extends StatelessWidget {
                   ),
                   Positioned(
                     top: 0,
-                    left: 8,
+                    left: 6,
                     child: SizedBox(
                       width: 80,
                       height: 80,

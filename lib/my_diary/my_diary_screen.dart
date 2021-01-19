@@ -360,4 +360,4 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   }
 }
 
-Future<DateTime> getFuture() {}
+// Future<DateTime> getFuture() {}
