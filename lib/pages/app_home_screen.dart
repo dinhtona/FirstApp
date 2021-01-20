@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../bottom_navigation_view/bottom_bar_view.dart';
 import '../app_theme.dart';
 import '../my_diary/my_diary_screen.dart';
+import 'table_screen.dart';
 
 class AppHomeScreen extends StatefulWidget {
   const AppHomeScreen({Key key}) : super(key: key);

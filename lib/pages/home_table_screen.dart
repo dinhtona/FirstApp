@@ -16,6 +16,8 @@ class _HomeTableState extends State<HomeTable> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ClipPath(
                 // clipper: MyClip(),
@@ -44,16 +46,17 @@ class _HomeTableState extends State<HomeTable> {
                           margin: EdgeInsets.symmetric(horizontal: 10),
                           child: TextField(
                             decoration: InputDecoration(
-                                hintText: 'Nhập tên...',
-                                hintStyle: TextStyle(
-                                  color: Colors.deepPurple,
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 7),
-                                suffixIcon: Icon(
-                                  Icons.search,
-                                  // size: 22,
-                                )),
+                              hintText: 'Tìm kiếm ...',
+                              hintStyle: TextStyle(
+                                color: Colors.deepPurple,
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 7),
+                              suffixIcon: Icon(
+                                Icons.search,
+                                // size: 22,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -62,7 +65,7 @@ class _HomeTableState extends State<HomeTable> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 10, top: 10),
+                padding: EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -85,38 +88,551 @@ class _HomeTableState extends State<HomeTable> {
                   ],
                 ),
               ),
-              SizedBox(
-                width: 100,
-                height: 100,
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 60,
-                      child: Image.network(
-                          'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
-                          fit: BoxFit.cover),
-                    ),
-                    Positioned(
-                      bottom: 20,
-                      left: 0,
-                      width: 100,
-                      height: 20,
-                      child: Text('Cà phê đen'),
-                    ),
-                    Positioned(
-                      bottom: 20,
-                      right: 0,
-                      width: 100,
-                      height: 20,
-                      child: Text(
-                        '12k',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.green),
+              Wrap(
+                spacing: 5,
+                direction: Axis.horizontal,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[200]),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
                       ),
                     ),
-                  ],
-                ),
+                    child: SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 60,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6.0),
+                              child: Image.network(
+                                  'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 40,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Cà phê đen',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 13,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Size L',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            right: 0,
+                            width: 100,
+                            height: 20,
+                            child: Text(
+                              '12k',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[200]),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 60,
+                            // decoration: new BoxDecoration(
+                            //   // color: Colors.green,
+                            //   borderRadius: new BorderRadius.only(
+                            //     topLeft: const Radius.circular(40.0),
+                            //     topRight: const Radius.circular(40.0),
+                            //   ),
+                            // ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6.0),
+                              child: Image.network(
+                                  'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 40,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Cà phê đen',
+                              style: TextStyle(
+                                fontSize: 13,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Size L',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            right: 0,
+                            width: 100,
+                            height: 20,
+                            child: Text(
+                              '12k',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[200]),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 60,
+                            // decoration: new BoxDecoration(
+                            //   // color: Colors.green,
+                            //   borderRadius: new BorderRadius.only(
+                            //     topLeft: const Radius.circular(40.0),
+                            //     topRight: const Radius.circular(40.0),
+                            //   ),
+                            // ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6.0),
+                              child: Image.network(
+                                  'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 40,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Cà phê đen',
+                              style: TextStyle(
+                                fontSize: 13,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Size L',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            right: 0,
+                            width: 100,
+                            height: 20,
+                            child: Text(
+                              '12k',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[200]),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 60,
+                            // decoration: new BoxDecoration(
+                            //   // color: Colors.green,
+                            //   borderRadius: new BorderRadius.only(
+                            //     topLeft: const Radius.circular(40.0),
+                            //     topRight: const Radius.circular(40.0),
+                            //   ),
+                            // ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6.0),
+                              child: Image.network(
+                                  'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 40,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Cà phê đen',
+                              style: TextStyle(
+                                fontSize: 13,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Size L',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            right: 0,
+                            width: 100,
+                            height: 20,
+                            child: Text(
+                              '12k',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[200]),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 60,
+                            // decoration: new BoxDecoration(
+                            //   // color: Colors.green,
+                            //   borderRadius: new BorderRadius.only(
+                            //     topLeft: const Radius.circular(40.0),
+                            //     topRight: const Radius.circular(40.0),
+                            //   ),
+                            // ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6.0),
+                              child: Image.network(
+                                  'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 40,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Cà phê đen',
+                              style: TextStyle(
+                                fontSize: 13,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Size L',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            right: 0,
+                            width: 100,
+                            height: 20,
+                            child: Text(
+                              '12k',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[200]),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 60,
+                            // decoration: new BoxDecoration(
+                            //   // color: Colors.green,
+                            //   borderRadius: new BorderRadius.only(
+                            //     topLeft: const Radius.circular(40.0),
+                            //     topRight: const Radius.circular(40.0),
+                            //   ),
+                            // ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6.0),
+                              child: Image.network(
+                                  'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 40,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Cà phê đen',
+                              style: TextStyle(
+                                fontSize: 13,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Size L',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            right: 0,
+                            width: 100,
+                            height: 20,
+                            child: Text(
+                              '12k',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[200]),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 60,
+                            // decoration: new BoxDecoration(
+                            //   // color: Colors.green,
+                            //   borderRadius: new BorderRadius.only(
+                            //     topLeft: const Radius.circular(40.0),
+                            //     topRight: const Radius.circular(40.0),
+                            //   ),
+                            // ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6.0),
+                              child: Image.network(
+                                  'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 40,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Cà phê đen',
+                              style: TextStyle(
+                                fontSize: 13,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            // width: 100,
+                            height: 20,
+                            child: Text(
+                              'Size L',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            right: 0,
+                            width: 100,
+                            height: 20,
+                            child: Text(
+                              '12k',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
               // Container(
               //   padding: EdgeInsets.all(10),
