@@ -13,6 +13,12 @@ class CoffeeCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 5),
       padding: EdgeInsets.all(2),
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey, offset: Offset(0.0, 1.0), //(x,y)
+            blurRadius: 1.5,
+          )
+        ],
         border: Border.all(color: Colors.grey[200]),
         color: Colors.white,
         shape: BoxShape.rectangle,
