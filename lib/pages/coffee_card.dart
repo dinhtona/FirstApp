@@ -133,13 +133,13 @@ class CoffeeCard extends StatelessWidget {
             ),
           ),
           ConstrainedBox(
-            constraints: BoxConstraints.expand(width: 100, height: 16),
+            constraints: BoxConstraints.expand(width: 100, height: 18),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
-                  flex: 15,
+                  flex: 21,
                   child: Container(
                     alignment: Alignment.centerLeft,
                     child: FloatingActionButton.extended(
@@ -162,19 +162,18 @@ class CoffeeCard extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 18,
+                  flex: 8,
                   child: Center(
-                    child: Text(
-                      coffeeItem.count > 0 ? coffeeItem.count.toString() : '',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
-                    ),
+                    child: Text(''
+                        // coffeeItem.count > 0 ? coffeeItem.count.toString() : '',
+                        // style: TextStyle(
+                        //   fontWeight: FontWeight.bold,
+                        //   color: Colors.green,
+                        ),
                   ),
                 ),
                 Expanded(
-                  flex: 15,
+                  flex: 21,
                   child: Container(
                     alignment: Alignment.centerRight,
                     child: FloatingActionButton.extended(
