@@ -7,7 +7,7 @@ class CoffeeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Image URl: ${coffeeItem.id}');
+    // print('Image URl: ${coffeeItem.id}');
     return Container(
       height: 100,
       margin: EdgeInsets.only(bottom: 5),
