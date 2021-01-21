@@ -43,7 +43,8 @@ class _TableState extends State<TableAll> {
                             margin: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
                               decoration: InputDecoration(
-                                hintText: 'Nhập tên...',
+                                enabledBorder: InputBorder.none,
+                                hintText: 'Nhập tên... ss',
                                 hintStyle: TextStyle(
                                   color: Colors.deepPurple,
                                 ),
