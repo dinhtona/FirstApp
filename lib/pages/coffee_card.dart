@@ -31,6 +31,7 @@ class CoffeeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Stack(
+            // fit: StackFit.loose,
             alignment: AlignmentDirectional.bottomStart,
             children: [
               SizedBox(
@@ -66,21 +67,34 @@ class CoffeeCard extends StatelessWidget {
                       fontFamily: 'tahoma'),
                 ),
               ),
-              // Positioned(
-              //   width: 20,
-              //   top: 0,
-              //   right: 0,
-              //   child: Text(
-              //     'M',
-              //     style: TextStyle(
-              //         color: Colors.white,
-              //         backgroundColor: Colors.black38,
-              //         fontSize: 12,
-              //         fontWeight: FontWeight.bold,
-              //         fontFamily: 'tahoma'),
-              //   ),
-              // ),
+              coffeeItem.count > 0
+                  ? Positioned(
+                      top: -8,
+                      right: -5,
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.redAccent,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 1,
+                            )
+                          ],
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          '${coffeeItem.count}',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    )
+                  : Text(''),
             ],
+            overflow: Overflow.visible,
           ),
           ConstrainedBox(
             constraints: BoxConstraints.expand(width: 100, height: 16),
@@ -151,7 +165,7 @@ class CoffeeCard extends StatelessWidget {
                   flex: 18,
                   child: Center(
                     child: Text(
-                      '0',
+                      coffeeItem.count > 0 ? coffeeItem.count.toString() : '',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
