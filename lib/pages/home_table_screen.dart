@@ -4,8 +4,10 @@ import 'coffee_card.dart';
 
 class HomeTable extends StatefulWidget {
   final AnimationController animationController;
+  final List<CoffeeItem> lstItem;
 
-  const HomeTable({Key key, this.animationController}) : super(key: key);
+  const HomeTable({Key key, this.animationController, this.lstItem})
+      : super(key: key);
   @override
   _HomeTableState createState() => _HomeTableState();
 }
