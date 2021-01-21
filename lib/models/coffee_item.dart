@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CoffeeItem {
-  CoffeeItem(Set<Object> set, {
-    this.id = 0,
-    this.name = '',
-    this.imageURL = '',
-    this.unitPrice = 0,
-    this.animationController,
-  });
+  CoffeeItem(this.id, this.name, this.imageURL, this.unitPrice, this.size,
+      this.animationController,
+      {this.count = 0});
 
   int id;
   String name;
   double unitPrice;
   String imageURL;
+  String size;
   AnimationController animationController;
+  int count;
 }
