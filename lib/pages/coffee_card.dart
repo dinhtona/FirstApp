@@ -8,9 +8,12 @@ class CoffeeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print('Image URl: ${coffeeItem.id}');
+    // double w = MediaQuery.of(context).size.width;
+    // double h = MediaQuery.of(context).size.height;
+
     return Container(
-      height: 100,
-      margin: EdgeInsets.only(bottom: 5),
+      // height: h,
+      margin: EdgeInsets.all(3),
       padding: EdgeInsets.all(2),
       decoration: BoxDecoration(
         boxShadow: [
@@ -35,8 +38,8 @@ class CoffeeCard extends StatelessWidget {
             alignment: AlignmentDirectional.bottomStart,
             children: [
               SizedBox(
-                width: 100,
-                height: 60,
+                // width: 100,
+                // height: w * 6 / 10,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6.0),
                   child: Image.network(
@@ -152,11 +155,6 @@ class CoffeeCard extends StatelessWidget {
                       elevation: 2,
                       tooltip: 'Bớt 1',
                       backgroundColor: Colors.white,
-                      // icon: Icon(
-                      //   Icons.remove,
-                      //   size: 12,
-                      //   color: Colors.red,
-                      // ),
                       onPressed: () {},
                     ),
                   ),
@@ -186,11 +184,6 @@ class CoffeeCard extends StatelessWidget {
                       elevation: 2,
                       tooltip: 'Thêm vào Order',
                       backgroundColor: Colors.white,
-                      // icon: Icon(
-                      //   Icons.add,
-                      //   size: 14,
-                      //   color: Colors.green,
-                      // ),
                       onPressed: () {},
                     ),
                   ),

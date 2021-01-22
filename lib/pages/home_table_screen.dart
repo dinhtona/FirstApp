@@ -1,4 +1,5 @@
 import 'package:FirstApp/models/coffee_item.dart';
+import 'package:FirstApp/ui_view/grid_header.dart';
 import 'package:flutter/material.dart';
 import 'coffee_card.dart';
 
@@ -16,88 +17,7 @@ class _HomeTableState extends State<HomeTable> {
   @override
   Widget build(BuildContext context) {
     final mainWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ClipPath(
-                // clipper: MyClip(),
-                child: Container(
-                  // height: 200,
-                  color: Colors.white,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          height: 40,
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              enabledBorder: InputBorder.none,
-                              hintText: 'Tìm kiếm ...',
-                              hintStyle: TextStyle(
-                                color: Colors.deepPurple,
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 7),
-                              suffixIcon: Icon(
-                                Icons.search,
-                                // size: 22,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Đặc biệt',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey,
-                        fontSize: 18,
-                      ),
-                    ),
-                    // Text(
-                    //   'Tất cả',
-                    //   style: TextStyle(
-                    //     fontWeight: FontWeight.bold,
-                    //     color: Colors.blueGrey,
-                    //     fontSize: 18,
-                    //   ),
-                    // )
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Wrap(
-                  spacing: 5,
-                  direction: Axis.horizontal,
-                  children: _getBigItem(),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return GridHeader();
   }
 
   _getBigItem() {
