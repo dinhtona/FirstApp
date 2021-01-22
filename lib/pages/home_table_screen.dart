@@ -17,7 +17,7 @@ class _HomeTableState extends State<HomeTable> {
   @override
   Widget build(BuildContext context) {
     final mainWidth = MediaQuery.of(context).size.width;
-    return GridHeader();
+    return CoffeeGridHeader();
   }
 
   _getBigItem() {
