@@ -145,6 +145,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                         tooltip: 'Bớt 1',
                         backgroundColor: Colors.white,
                         onPressed: () {
+                          print('Key: ${widget.key.toString()}');
                           setState(() {
                             if (widget.coffeeItem.count > 0)
                               widget.coffeeItem.count -= 1;

@@ -265,6 +265,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
                 // print(' Item : $cf');
                 // return CoffeeCard(cf);
                 return CoffeeItemCard(
+                  key: UniqueKey(),
                   coffeeItem: cf,
                 );
               },
