@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class CoffeeGridHeader extends StatefulWidget {
+  int tableID;
+
+  CoffeeGridHeader({key, @required this.tableID});
   @override
   _CoffeeGridHeaderState createState() => _CoffeeGridHeaderState();
 }
@@ -16,7 +19,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
     new CoffeeItemGROUP(3, "Đồ ăn nhanh"),
     new CoffeeItemGROUP(4, "Sinh tố"),
     new CoffeeItemGROUP(5, "Rượu Tây"),
-    new CoffeeItemGROUP(6, "Bia"),
+    new CoffeeItemGROUP(6, "Bia bọt"),
   ];
   List<CoffeeItem> lstItem = [
     CoffeeItem(
@@ -221,7 +224,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Grid Header Demo"),
+        title: Text(widget.tableID.toString()),
       ),
       body: coffeeGridHeader(),
     );

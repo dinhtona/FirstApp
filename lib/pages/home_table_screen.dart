@@ -1,5 +1,5 @@
 import 'package:FirstApp/models/coffee_item.dart';
-import 'package:FirstApp/ui_view/grid_header.dart';
+import 'package:FirstApp/ui_view/coffee_grid_header.dart';
 import 'package:flutter/material.dart';
 import 'coffee_card.dart';
 
@@ -16,8 +16,10 @@ class HomeTable extends StatefulWidget {
 class _HomeTableState extends State<HomeTable> {
   @override
   Widget build(BuildContext context) {
-    final mainWidth = MediaQuery.of(context).size.width;
-    return CoffeeGridHeader();
+    // final mainWidth = MediaQuery.of(context).size.width;
+    return CoffeeGridHeader(
+      tableID: 9,
+    );
   }
 
   _getBigItem() {

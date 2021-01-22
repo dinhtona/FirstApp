@@ -12,7 +12,7 @@ class CoffeeItemCard extends StatelessWidget {
       margin: EdgeInsets.all(5.0),
       shape: RoundedRectangleBorder(
         // side: BorderSide(color: Colors.white70, width: 1),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(4),
       ),
       color: Colors.white,
       child: Column(
