@@ -1,10 +1,20 @@
 import 'package:FirstApp/models/coffee_item.dart';
 import 'package:flutter/material.dart';
 
-class CoffeeItemCard extends StatelessWidget {
+class CoffeeItemCard extends StatefulWidget {
   final CoffeeItem coffeeItem;
 
-  const CoffeeItemCard({Key key, this.coffeeItem}) : super(key: key);
+  const CoffeeItemCard({Key key, @required this.coffeeItem}) : super(key: key);
+
+  @override
+  _CoffeeItemCardState createState() => _CoffeeItemCardState();
+}
+
+class _CoffeeItemCardState extends State<CoffeeItemCard> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,7 @@ class CoffeeItemCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5.0),
                     child: Image.network(
-                      coffeeItem.imageURL,
+                      widget.coffeeItem.imageURL,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -43,7 +53,7 @@ class CoffeeItemCard extends StatelessWidget {
                   ),
                   padding: EdgeInsets.fromLTRB(2, 1, 4, 1),
                   child: Text(
-                    coffeeItem.name,
+                    widget.coffeeItem.name,
                     style: TextStyle(
                         color: Colors.white,
                         // backgroundColor: Colors.black38,
@@ -52,7 +62,7 @@ class CoffeeItemCard extends StatelessWidget {
                         fontFamily: 'tahoma'),
                   ),
                 ),
-                coffeeItem.count > 0
+                widget.coffeeItem.count > 0
                     ? Positioned(
                         top: -5,
                         right: -5,
@@ -72,7 +82,7 @@ class CoffeeItemCard extends StatelessWidget {
                           ),
                           alignment: Alignment.center,
                           child: Text(
-                            '${coffeeItem.count}',
+                            '${widget.coffeeItem.count}',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -90,7 +100,7 @@ class CoffeeItemCard extends StatelessWidget {
                   flex: 3,
                   child: Center(
                     child: Text(
-                      coffeeItem.size,
+                      widget.coffeeItem.size,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -101,7 +111,7 @@ class CoffeeItemCard extends StatelessWidget {
                 Expanded(
                   flex: 8,
                   child: Text(
-                    coffeeItem.unitPrice.toString(),
+                    widget.coffeeItem.unitPrice.toString(),
                     textAlign: TextAlign.end,
                     style: TextStyle(
                       fontSize: 14,
@@ -134,7 +144,12 @@ class CoffeeItemCard extends StatelessWidget {
                         elevation: 2,
                         tooltip: 'Bớt 1',
                         backgroundColor: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            if (widget.coffeeItem.count > 0)
+                              widget.coffeeItem.count -= 1;
+                          });
+                        },
                       ),
                     ),
                   ),
