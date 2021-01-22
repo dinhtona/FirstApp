@@ -232,7 +232,7 @@ class _GridHeaderState extends State<GridHeader> {
       itemBuilder: (context, index) {
         return new StickyHeader(
           header: new Container(
-            height: 38.0,
+            height: 37.0,
             color: Colors.white,
             padding: new EdgeInsets.symmetric(horizontal: 12.0),
             alignment: Alignment.centerLeft,
@@ -265,85 +265,74 @@ class _GridHeaderState extends State<GridHeader> {
                   color: Colors.white,
                   child: Column(
                     children: [
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.all(3),
-                          child: Stack(
-                            // fit: StackFit.loose,
-                            alignment: AlignmentDirectional.bottomStart,
-                            children: [
-                              SizedBox.expand(
-                                // width: 100,
-                                // height: w * 6 / 10,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(6.0),
-                                  child: Image.network(
-                                    cf.imageURL,
-                                    fit: BoxFit.cover,
-                                  ),
+                      Expanded(
+                        flex: 6,
+                        child: Stack(
+                          alignment: AlignmentDirectional.bottomStart,
+                          children: [
+                            SizedBox.expand(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: Image.network(
+                                  cf.imageURL,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              Container(
-                                constraints: BoxConstraints(
-                                    minWidth: 100, maxWidth: 100),
-                                decoration: BoxDecoration(
-                                  color: Colors.black38,
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(8),
-                                    bottomRight: Radius.circular(8),
-                                  ),
-                                ),
-                                padding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-                                // height: 16,
-                                // width: 100,
-                                child: Text(
-                                  cf.name,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      // backgroundColor: Colors.black38,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'tahoma'),
+                            ),
+                            Container(
+                              // constraints:
+                              //     BoxConstraints(minWidth: 100, maxWidth: 100),
+                              decoration: BoxDecoration(
+                                color: Colors.black45,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(8),
+                                  bottomRight: Radius.circular(8),
                                 ),
                               ),
-                              cf.count > 0
-                                  ? Positioned(
-                                      top: -8,
-                                      right: -5,
-                                      child: Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 6, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.redAccent,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.grey,
-                                              offset: Offset(0.0, 1.0), //(x,y)
-                                              blurRadius: 1,
-                                            )
-                                          ],
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          '${cf.count}',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
+                              padding: EdgeInsets.fromLTRB(2, 1, 4, 1),
+                              child: Text(
+                                cf.name,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    // backgroundColor: Colors.black38,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'tahoma'),
+                              ),
+                            ),
+                            cf.count > 0
+                                ? Positioned(
+                                    top: -5,
+                                    right: -5,
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 6, vertical: 2),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.redAccent,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            offset: Offset(0.0, 1.0), //(x,y)
+                                            blurRadius: 1,
+                                          )
+                                        ],
                                       ),
-                                    )
-                                  : Text(''),
-                            ],
-                            overflow: Overflow.visible,
-                          ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        '${cf.count}',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  )
+                                : Text(''),
+                          ],
+                          overflow: Overflow.visible,
                         ),
                       ),
-                      ConstrainedBox(
-                        constraints:
-                            BoxConstraints.expand(width: 100, height: 16),
+                      Expanded(
+                        flex: 2,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          // textDirection: TextDirection.ltr,
                           children: [
                             Expanded(
                               flex: 3,
@@ -359,34 +348,29 @@ class _GridHeaderState extends State<GridHeader> {
                             ),
                             Expanded(
                               flex: 8,
-                              child: Container(
-                                padding: EdgeInsets.only(right: 2),
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  cf.unitPrice.toString(),
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
+                              child: Text(
+                                cf.unitPrice.toString(),
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      ConstrainedBox(
-                        constraints:
-                            BoxConstraints.expand(width: 100, height: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 4),
-                              child: Expanded(
-                                flex: 21,
+                      Expanded(
+                        flex: 3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 4),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                flex: 1,
                                 child: Container(
-                                  alignment: Alignment.centerLeft,
+                                  alignment: Alignment.center,
                                   child: FloatingActionButton.extended(
                                     label: Text(
                                       '-',
@@ -402,25 +386,16 @@ class _GridHeaderState extends State<GridHeader> {
                                   ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              flex: 8,
-                              child: Center(
-                                child: Text(''
-                                    // coffeeItem.count > 0 ? coffeeItem.count.toString() : '',
-                                    // style: TextStyle(
-                                    //   fontWeight: FontWeight.bold,
-                                    //   color: Colors.green,
-                                    ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 4),
-                              child: Expanded(
-                                flex: 21,
+                              Expanded(
+                                flex: 1,
                                 child: Container(
-                                  alignment: Alignment.centerRight,
+                                  alignment: Alignment.center,
                                   child: FloatingActionButton.extended(
+                                    // child: Icon(
+                                    //   Icons.add,
+                                    //   size: 16,
+                                    //   color: Colors.green,
+                                    // ),
                                     label: Text(
                                       '+',
                                       style: TextStyle(
@@ -429,14 +404,14 @@ class _GridHeaderState extends State<GridHeader> {
                                       ),
                                     ),
                                     elevation: 2,
-                                    tooltip: 'Thêm vào Order',
+                                    tooltip: 'Bớt 1',
                                     backgroundColor: Colors.white,
                                     onPressed: () {},
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
