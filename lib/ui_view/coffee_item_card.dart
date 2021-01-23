@@ -1,5 +1,6 @@
 import 'package:FirstApp/models/coffee_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CoffeeItemCard extends StatefulWidget {
   final CoffeeItem coffeeItem;
@@ -18,6 +19,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
 
   @override
   Widget build(BuildContext context) {
+    CoffeeItem item = widget.coffeeItem;
     return Card(
       margin: EdgeInsets.all(5.0),
       shape: RoundedRectangleBorder(
@@ -36,7 +38,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5.0),
                     child: Image.network(
-                      widget.coffeeItem.imageURL,
+                      item.imageURL,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -53,7 +55,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                   ),
                   padding: EdgeInsets.fromLTRB(2, 1, 4, 1),
                   child: Text(
-                    widget.coffeeItem.name,
+                    item.name,
                     style: TextStyle(
                         color: Colors.white,
                         // backgroundColor: Colors.black38,
@@ -62,7 +64,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                         fontFamily: 'tahoma'),
                   ),
                 ),
-                widget.coffeeItem.count > 0
+                item.count > 0
                     ? Positioned(
                         top: -5,
                         right: -5,
@@ -82,7 +84,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                           ),
                           alignment: Alignment.center,
                           child: Text(
-                            '${widget.coffeeItem.count}',
+                            '${item.count}',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -100,7 +102,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                   flex: 3,
                   child: Center(
                     child: Text(
-                      widget.coffeeItem.size,
+                      item.size,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -111,7 +113,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                 Expanded(
                   flex: 8,
                   child: Text(
-                    widget.coffeeItem.unitPrice.toString(),
+                    item.unitPrice.toString(),
                     textAlign: TextAlign.end,
                     style: TextStyle(
                       fontSize: 14,
@@ -130,51 +132,88 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Container(
                       alignment: Alignment.center,
-                      child: FloatingActionButton.extended(
-                        label: Text(
-                          '-',
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 16,
-                          ),
+                      child: FloatingActionButton(
+                        child: Icon(
+                          Icons.remove,
+                          size: 20,
+                          color: Colors.redAccent,
                         ),
+                        // label: Text(
+                        //   '-',
+                        //   style: TextStyle(
+                        //     color: Colors.red,
+                        //     fontSize: 16,
+                        //   ),
+                        // ),
                         elevation: 2,
                         tooltip: 'Bớt 1',
                         backgroundColor: Colors.white,
                         onPressed: () {
-                          print('Key: ${widget.key.toString()}');
+                          // print(
+                          //     'item.id: ${item.id} == widget.coffeeItem.id:${widget.coffeeItem.id}');
                           setState(() {
-                            if (widget.coffeeItem.count > 0)
-                              widget.coffeeItem.count -= 1;
+                            if (item.count > 0 &&
+                                item.id == widget.coffeeItem.id)
+                              widget.coffeeItem.count -=
+                                  widget.coffeeItem.numAdd;
                           });
                         },
                       ),
                     ),
                   ),
                   Expanded(
-                    flex: 1,
+                    flex: 2,
+                    child: new TextFormField(
+                      initialValue: item.numAdd.toString(),
+                      onChanged: (value) {
+                        // print('Value: ${value}');
+                        setState(() {
+                          if (item.id == widget.coffeeItem.id)
+                            widget.coffeeItem.numAdd =
+                                int.parse(value, onError: (value) => 1);
+                        });
+                      },
+                      textAlign: TextAlign.center,
+                      // decoration: new InputDecoration(labelText: "1"),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ], // Only numbers can be entered
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
                     child: Container(
                       alignment: Alignment.center,
-                      child: FloatingActionButton.extended(
-                        // child: Icon(
-                        //   Icons.add,
-                        //   size: 16,
-                        //   color: Colors.green,
-                        // ),
-                        label: Text(
-                          '+',
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 16,
-                          ),
+                      child: FloatingActionButton(
+                        child: Icon(
+                          Icons.add,
+                          size: 20,
+                          color: Colors.green,
                         ),
+                        // label: Text(
+                        //   '+',
+                        //   style: TextStyle(
+                        //     color: Colors.green,
+                        //     fontSize: 16,
+                        //   ),
+                        // ),
                         elevation: 2,
-                        tooltip: 'Bớt 1',
+                        tooltip: 'Cộng 1',
                         backgroundColor: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          // print("=====================\nKey: ${widget.key}");
+                          // print("Item.id: ${item.id}");
+                          // print("Widget.item.id: ${widget.coffeeItem.id}");
+                          setState(() {
+                            if (Key(item.id.toString()) == widget.key)
+                              widget.coffeeItem.count +=
+                                  widget.coffeeItem.numAdd;
+                          });
+                        },
                       ),
                     ),
                   ),

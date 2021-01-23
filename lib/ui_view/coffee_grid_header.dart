@@ -28,15 +28,13 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
         45000,
         'M',
-        null,
         idGroup: 2),
     CoffeeItem(
         2,
-        'Cà phê đen nóng size M',
+        'Cà phê đen nóng size ML',
         'https://www.eatright.org/-/media/eatrightimages/cup-of-coffee_528814833.jpg',
         12000,
         'L',
-        null,
         count: 9,
         idGroup: 1),
     CoffeeItem(
@@ -45,7 +43,6 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        null,
         idGroup: 1),
     CoffeeItem(
         4,
@@ -53,7 +50,6 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEL7oJvelVAkRPi1gLDGMl-zCzUNhfykJyg&usqp=CAU',
         22000,
         'S',
-        null,
         idGroup: 1),
     CoffeeItem(
         5,
@@ -61,7 +57,6 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://cdn-prod.medicalnewstoday.com/content/images/articles/323/323594/white-cup-with-black-coffee.jpg',
         10000,
         'SL',
-        null,
         idGroup: 1),
     CoffeeItem(
         6,
@@ -69,154 +64,135 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
         45000,
         'L',
-        null,
         idGroup: 2),
     CoffeeItem(
-        3,
+        7,
         'Cà phê nguyên chất size M',
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        null,
         count: 9,
         idGroup: 1),
     CoffeeItem(
-        4,
+        8,
         'Bạc xĩu nóng',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEL7oJvelVAkRPi1gLDGMl-zCzUNhfykJyg&usqp=CAU',
         22000,
         'S',
-        null,
         idGroup: 3),
     CoffeeItem(
-        1,
+        9,
         'Trà Sữa Size L',
         'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
         45000,
         'M',
-        null,
         idGroup: 2),
     CoffeeItem(
-        2,
+        10,
         'Cà phê đen nóng size M',
         'https://www.eatright.org/-/media/eatrightimages/cup-of-coffee_528814833.jpg',
         12000,
         'L',
-        null,
         count: 9,
         idGroup: 1),
     CoffeeItem(
-        3,
+        11,
         'Cà phê nguyên chất size M',
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        null,
         count: 9,
         idGroup: 1),
     CoffeeItem(
-        4,
+        12,
         'Bạc xĩu nóng',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEL7oJvelVAkRPi1gLDGMl-zCzUNhfykJyg&usqp=CAU',
         22000,
         'S',
-        null,
         count: 9,
         idGroup: 5),
     CoffeeItem(
-        5,
+        13,
         'Cà phê đen nóng size L',
         'https://cdn-prod.medicalnewstoday.com/content/images/articles/323/323594/white-cup-with-black-coffee.jpg',
         10000,
-        'SL',
-        null),
+        'SL'),
     CoffeeItem(
-        6,
+        14,
         'Trà sữa trân châu đường đen size XL',
         'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
         45000,
         'L',
-        null,
         idGroup: 2),
     CoffeeItem(
-        3,
+        15,
         'Cà phê nguyên chất size M',
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        null,
         idGroup: 3),
     CoffeeItem(
-        4,
+        16,
         'Bạc xĩu nóng',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEL7oJvelVAkRPi1gLDGMl-zCzUNhfykJyg&usqp=CAU',
         22000,
         'S',
-        null,
         idGroup: 4),
     CoffeeItem(
-        1,
+        17,
         'Trà Sữa Size L',
         'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
         45000,
         'M',
-        null,
         idGroup: 2),
     CoffeeItem(
-        2,
+        18,
         'Cà phê đen nóng size M',
         'https://www.eatright.org/-/media/eatrightimages/cup-of-coffee_528814833.jpg',
         12000,
         'L',
-        null,
         idGroup: 4),
     CoffeeItem(
-        3,
+        19,
         'Cà phê nguyên chất size M',
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        null,
         idGroup: 1),
     CoffeeItem(
-        4,
+        20,
         'Bạc xĩu nóng',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEL7oJvelVAkRPi1gLDGMl-zCzUNhfykJyg&usqp=CAU',
         22000,
         'S',
-        null,
         idGroup: 3),
     CoffeeItem(
-        5,
+        21,
         'Cà phê đen nóng size L',
         'https://cdn-prod.medicalnewstoday.com/content/images/articles/323/323594/white-cup-with-black-coffee.jpg',
         10000,
         'SL',
-        null,
         idGroup: 5),
     CoffeeItem(
-        6,
+        22,
         'Trà sữa trân châu đường đen size XL',
         'https://lh3.googleusercontent.com/lAJPinE4zkFc2Im7tQfKYVddiYwj_BiaA2C0ZSu2txv4g5sTl3OMKSTK0snsyQMT_3tPRKxTBVpmxhQMAq6x5TQ-EA=w800',
         45000,
         'L',
-        null,
         idGroup: 2),
     CoffeeItem(
-        3,
+        23,
         'Cà phê nguyên chất size M',
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        null,
         idGroup: 6),
     CoffeeItem(
-        4,
+        24,
         'Bạc xĩu nóng',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEL7oJvelVAkRPi1gLDGMl-zCzUNhfykJyg&usqp=CAU',
         22000,
         'S',
-        null,
         idGroup: 4),
   ];
 
@@ -231,7 +207,13 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
   }
 
   Widget coffeeGridHeader() {
+    lstGroup
+        .map((g) =>
+            g.lstCoffeeItem = lstItem.where((i) => i.idGroup == g.id).toList())
+        .toList();
+
     return new ListView.builder(
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 70),
       itemCount: lstGroup.length,
       itemBuilder: (context, index) {
         return new StickyHeader(
@@ -259,13 +241,12 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
                 childAspectRatio: 1,
               ),
               itemBuilder: (contxt, indx) {
-                // print(' index: $index');
-                CoffeeItem cf =
-                    lstItem.where((i) => i.id == lstItem[indx].id).first;
+                print(' index: ${lstItem[indx].name}');
+                CoffeeItem cf = lstGroup[index].lstCoffeeItem[indx];
                 // print(' Item : $cf');
                 // return CoffeeCard(cf);
                 return CoffeeItemCard(
-                  key: UniqueKey(),
+                  key: Key(cf.id.toString()),
                   coffeeItem: cf,
                 );
               },
