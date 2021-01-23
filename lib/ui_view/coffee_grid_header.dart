@@ -247,6 +247,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
                 // return CoffeeCard(cf);
                 return CoffeeItemCard(
                   key: Key(cf.id.toString()),
+                  idTable: widget.tableID,
                   coffeeItem: cf,
                 );
               },

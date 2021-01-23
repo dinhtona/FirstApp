@@ -1,11 +1,16 @@
 import 'package:FirstApp/models/coffee_item.dart';
+import 'package:FirstApp/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class CoffeeItemCard extends StatefulWidget {
   final CoffeeItem coffeeItem;
+  final int idTable;
 
-  const CoffeeItemCard({Key key, @required this.coffeeItem}) : super(key: key);
+  const CoffeeItemCard(
+      {Key key, @required this.idTable, @required this.coffeeItem})
+      : super(key: key);
 
   @override
   _CoffeeItemCardState createState() => _CoffeeItemCardState();
@@ -168,6 +173,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                     flex: 2,
                     child: new TextFormField(
                       initialValue: item.numAdd.toString(),
+                      style: TextStyle(fontSize: 14),
                       onChanged: (value) {
                         // print('Value: ${value}');
                         setState(() {
@@ -213,6 +219,8 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                               widget.coffeeItem.count +=
                                   widget.coffeeItem.numAdd;
                           });
+                          var order = context.read<OrderModel>();
+                          order.updateItem(widget.idTable, widget.coffeeItem);
                         },
                       ),
                     ),
