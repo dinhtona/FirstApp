@@ -1,6 +1,8 @@
 import 'package:FirstApp/models/coffee_item.dart';
+import 'package:FirstApp/models/order.dart';
 import 'package:FirstApp/ui_view/coffee_grid_header.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeTable extends StatefulWidget {
   final AnimationController animationController;
@@ -22,6 +24,18 @@ class _HomeTableState extends State<HomeTable> {
       body: CoffeeGridHeader(
         tableID: widget.tableID,
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.pinkAccent,
+        label: Consumer<OrderModel>(
+          builder: (context, cart, child) {
+            // print('cart.listOrderF.length: ${cart}');
+            return Text(cart.totalItem(widget.tableID).toString());
+          },
+        ),
+        icon: Icon(Icons.shopping_cart),
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
   }
 }

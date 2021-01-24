@@ -25,6 +25,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
   @override
   Widget build(BuildContext context) {
     CoffeeItem item = widget.coffeeItem;
+    var provider = Provider.of<OrderModel>(context);
     return Card(
       margin: EdgeInsets.all(5.0),
       shape: RoundedRectangleBorder(
@@ -137,7 +138,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 2,
+                    flex: 4,
                     child: Container(
                       alignment: Alignment.center,
                       child: FloatingActionButton(
@@ -165,6 +166,14 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                               widget.coffeeItem.count -=
                                   widget.coffeeItem.numAdd;
                           });
+                          provider.updateItem(
+                              widget.idTable, widget.coffeeItem);
+                          // var order = context.read<OrderModel>();
+                          // if (widget.coffeeItem.count > 0) {
+                          //   order.updateItem(widget.idTable, widget.coffeeItem);
+                          // } else {
+                          //   order.removeItem(widget.idTable, widget.coffeeItem);
+                          // }
                         },
                       ),
                     ),
@@ -191,7 +200,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                     ),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 4,
                     child: Container(
                       alignment: Alignment.center,
                       child: FloatingActionButton(
@@ -219,8 +228,10 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                               widget.coffeeItem.count +=
                                   widget.coffeeItem.numAdd;
                           });
-                          var order = context.read<OrderModel>();
-                          order.updateItem(widget.idTable, widget.coffeeItem);
+                          // var order = context.read<OrderModel>();
+                          // order.updateItem(widget.idTable, widget.coffeeItem);
+                          provider.updateItem(
+                              widget.idTable, widget.coffeeItem);
                         },
                       ),
                     ),

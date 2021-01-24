@@ -2,7 +2,24 @@ import 'package:flutter/material.dart';
 import 'coffee_item.dart';
 
 class OrderModel with ChangeNotifier {
-  List<Order> listOrder;
+  List<Order> listOrder = [];
+
+  List<Order> get catalog => listOrder;
+
+  set catalog(List<Order> newCatalog) {
+    assert(newCatalog != null);
+    // assert(listOrder.every((id) => newCatalog.getById(id) != null),
+    //     'The catalog $newCatalog does not have one of $_itemIds in it.');
+    listOrder = newCatalog;
+    // Notify listeners, in case the new catalog provides information
+    // different from the previous one. For example, availability of an item
+    // might have changed.
+    notifyListeners();
+  }
+
+  /// List of items in the cart.
+  // List<CoffeeItem> get items =>
+  //     listOrder.map((id) => _catalog.getById(id)).toList();
 
   double totalPrice(int idTable) {
     double total = 0;
@@ -14,26 +31,40 @@ class OrderModel with ChangeNotifier {
 
   int totalItem(int idTable) {
     int total = 0;
-    listOrder.where((o) => o.idTable == idTable).first.lstItem.map((cf) {
-      total += 1;
-    });
+    if (listOrder == null)
+      total = 0;
+    else {
+      var x = listOrder.indexWhere((o) => o.idTable == idTable);
+      if (x <= 0)
+        total = 0;
+      else
+        listOrder[x].lstItem.map((cf) {
+          total += cf.count;
+        });
+    }
+
     return total;
   }
 
   void updateItem(int idTable, CoffeeItem item) {
-    Order od = listOrder.where((o) => o.idTable == idTable).first;
-    if (od == null) {
-      od = new Order(idTable, lstItem: [item]);
+    // print('idTable: ${idTable}  item: ${item.count}');
+    int i = listOrder.indexWhere((o) => o.idTable == idTable);
+    if (i < 0) {
+      listOrder.add(new Order(idTable, lstItem: [item]));
     } else {
       List<CoffeeItem> lstCoffee =
           listOrder.where((o) => o.idTable == idTable).first.lstItem;
-      if (lstCoffee.contains(item)) {
+      print('item.count: ${lstCoffee}');
+      if (lstCoffee.indexWhere((o) => o.id == item.id) >= 0) {
         lstCoffee[lstCoffee.indexWhere((element) => element.id == item.id)] =
             item;
-        listOrder.where((o) => o.idTable == idTable).first.lstItem = lstCoffee;
+        listOrder.removeWhere((o) => o.idTable == idTable);
+        listOrder.add(new Order(idTable, lstItem: lstCoffee));
+        // listOrder.where((o) => o.idTable == idTable).first.lstItem = lstCoffee;
       } else {
-        lstCoffee..add(item);
-        listOrder.where((o) => o.idTable == idTable).first.lstItem = lstCoffee;
+        lstCoffee.add(item);
+        listOrder.removeWhere((o) => o.idTable == idTable);
+        listOrder.add(new Order(idTable, lstItem: lstCoffee));
       }
     }
     notifyListeners();
@@ -58,9 +89,16 @@ class OrderModel with ChangeNotifier {
   }
 }
 
+@immutable
 class Order {
   Order(this.idTable, {this.lstItem});
 
-  int idTable;
-  List<CoffeeItem> lstItem;
+  final int idTable;
+  final List<CoffeeItem> lstItem;
+
+  @override
+  int get hashCode => idTable;
+
+  @override
+  bool operator ==(Object other) => other is Order && other.idTable == idTable;
 }

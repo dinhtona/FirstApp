@@ -241,7 +241,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
                 childAspectRatio: 1,
               ),
               itemBuilder: (contxt, indx) {
-                print(' index: ${lstItem[indx].name}');
+                // print(' index: ${lstItem[indx].name}');
                 CoffeeItem cf = lstGroup[index].lstCoffeeItem[indx];
                 // print(' Item : $cf');
                 // return CoffeeCard(cf);

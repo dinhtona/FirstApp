@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:FirstApp/app_theme.dart';
+import 'package:FirstApp/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'navigation_home_screen.dart';
 
 void main() async {
@@ -10,7 +12,11 @@ void main() async {
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MyApp()));
+  ]).then((_) => runApp(MultiProvider(providers: [
+        ChangeNotifierProvider<OrderModel>(create: (_) => OrderModel()),
+        // Provider<SomethingElse>(create: (_) => SomethingElse()),
+        // Provider<AnotherThing>(create: (_) => AnotherThing()),
+      ], child: MyApp())));
 }
 
 class MyApp extends StatelessWidget {
