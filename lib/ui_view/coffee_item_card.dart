@@ -141,7 +141,10 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                     flex: 4,
                     child: Container(
                       alignment: Alignment.center,
-                      child: FloatingActionButton(
+                      padding: EdgeInsets.all(5),
+                      child: new RaisedButton(
+                        // color: Colors.white,
+                        // heroTag: null,
                         child: Icon(
                           Icons.remove,
                           size: 20,
@@ -155,8 +158,8 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                         //   ),
                         // ),
                         elevation: 2,
-                        tooltip: 'Bớt 1',
-                        backgroundColor: Colors.white,
+                        // tooltip: 'Bớt 1',
+                        // backgroundColor: Colors.white,
                         onPressed: () {
                           // print(
                           //     'item.id: ${item.id} == widget.coffeeItem.id:${widget.coffeeItem.id}');
@@ -202,8 +205,10 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                   Expanded(
                     flex: 4,
                     child: Container(
+                      padding: EdgeInsets.all(5),
                       alignment: Alignment.center,
-                      child: FloatingActionButton(
+                      child: RaisedButton(
+                        // heroTag: null,
                         child: Icon(
                           Icons.add,
                           size: 20,
@@ -217,8 +222,8 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                         //   ),
                         // ),
                         elevation: 2,
-                        tooltip: 'Cộng 1',
-                        backgroundColor: Colors.white,
+                        // tooltip: 'Cộng 1',
+                        // backgroundColor: Colors.white,
                         onPressed: () {
                           // print("=====================\nKey: ${widget.key}");
                           // print("Item.id: ${item.id}");
