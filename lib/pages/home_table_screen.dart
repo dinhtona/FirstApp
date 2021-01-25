@@ -49,7 +49,7 @@ class _HomeTableState extends State<HomeTable> {
             );
           else
             Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return CartScreen();
+              return CartScreen( idTable: widget.tableID);
             }));
         },
       ),

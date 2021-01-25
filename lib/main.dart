@@ -12,11 +12,18 @@ void main() async {
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MultiProvider(providers: [
-        ChangeNotifierProvider<OrderModel>(create: (_) => OrderModel()),
-        // Provider<SomethingElse>(create: (_) => SomethingElse()),
-        // Provider<AnotherThing>(create: (_) => AnotherThing()),
-      ], child: MyApp())));
+  ]).then(
+    (_) => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<OrderModel>(create: (_) => OrderModel()),
+          // Provider<SomethingElse>(create: (_) => SomethingElse()),
+          // Provider<AnotherThing>(create: (_) => AnotherThing()),
+        ],
+        child: MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
