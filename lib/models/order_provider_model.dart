@@ -100,6 +100,7 @@ class OrderModel with ChangeNotifier {
 
   void removeOrder(int idTable) {
     listOrder.removeAt(listOrder.indexWhere((i) => i.idTable == idTable));
+    notifyListeners();
   }
 
   void removeAll() {

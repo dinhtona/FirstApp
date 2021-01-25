@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:FirstApp/app_theme.dart';
-import 'package:FirstApp/models/order.dart';
+import 'package:FirstApp/models/order_provider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
