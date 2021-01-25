@@ -6,16 +6,16 @@ class OrderModel with ChangeNotifier {
 
   List<Order> get catalog => listOrder;
 
-  set catalog(List<Order> newCatalog) {
-    assert(newCatalog != null);
-    // assert(listOrder.every((id) => newCatalog.getById(id) != null),
-    //     'The catalog $newCatalog does not have one of $_itemIds in it.');
-    listOrder = newCatalog;
-    // Notify listeners, in case the new catalog provides information
-    // different from the previous one. For example, availability of an item
-    // might have changed.
-    notifyListeners();
-  }
+  // set catalog(List<Order> newCatalog) {
+  //   assert(newCatalog != null);
+  //   // assert(listOrder.every((id) => newCatalog.getById(id) != null),
+  //   //     'The catalog $newCatalog does not have one of $_itemIds in it.');
+  //   listOrder = newCatalog;
+  //   // Notify listeners, in case the new catalog provides information
+  //   // different from the previous one. For example, availability of an item
+  //   // might have changed.
+  //   notifyListeners();
+  // }
 
   /// List of items in the cart.
   // List<CoffeeItem> get items =>
@@ -23,9 +23,17 @@ class OrderModel with ChangeNotifier {
 
   double totalPrice(int idTable) {
     double total = 0;
-    listOrder.where((o) => o.idTable == idTable).first.lstItem.map((cf) {
-      total += cf.unitPrice;
-    });
+    if (listOrder == null)
+      total = 0;
+    else {
+      var x = listOrder.indexWhere((o) => o.idTable == idTable);
+      if (x < 0) {
+        total = 0;
+      } else
+        listOrder[x].lstItem.map((cf) {
+          total += cf.unitPrice;
+        }).toList();
+    }
     return total;
   }
 
@@ -35,15 +43,26 @@ class OrderModel with ChangeNotifier {
       total = 0;
     else {
       var x = listOrder.indexWhere((o) => o.idTable == idTable);
-      if (x <= 0)
+      if (x < 0) {
         total = 0;
-      else
+        // print('x=$x');
+      } else
+        // print('Else========================');
         listOrder[x].lstItem.map((cf) {
+          // print('cf.count = ${cf.count}');
           total += cf.count;
-        });
+        }).toList();
     }
 
     return total;
+  }
+
+  List<CoffeeItem> listItemByIDTable(int idTable) {
+    var x = listOrder.indexWhere((o) => o.idTable == idTable);
+    if (x >= 0) {
+      return listOrder[x].lstItem;
+    } else
+      return new List();
   }
 
   void updateItem(int idTable, CoffeeItem item) {
@@ -54,7 +73,7 @@ class OrderModel with ChangeNotifier {
     } else {
       List<CoffeeItem> lstCoffee =
           listOrder.where((o) => o.idTable == idTable).first.lstItem;
-      print('item.count: ${lstCoffee}');
+      print('item.count: ${lstCoffee.length}');
       if (lstCoffee.indexWhere((o) => o.id == item.id) >= 0) {
         lstCoffee[lstCoffee.indexWhere((element) => element.id == item.id)] =
             item;

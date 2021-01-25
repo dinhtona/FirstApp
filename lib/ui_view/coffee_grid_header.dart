@@ -1,11 +1,11 @@
 import 'package:FirstApp/models/coffee_item.dart';
-import 'package:FirstApp/pages/coffee_card.dart';
+
 import 'package:FirstApp/ui_view/coffee_item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class CoffeeGridHeader extends StatefulWidget {
-  int tableID;
+  final int tableID;
 
   CoffeeGridHeader({key, @required this.tableID});
   @override
@@ -35,7 +35,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://www.eatright.org/-/media/eatrightimages/cup-of-coffee_528814833.jpg',
         12000,
         'L',
-        count: 9,
+        count: 0,
         idGroup: 1),
     CoffeeItem(
         3,
@@ -71,7 +71,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        count: 9,
+        count: 0,
         idGroup: 1),
     CoffeeItem(
         8,
@@ -93,7 +93,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://www.eatright.org/-/media/eatrightimages/cup-of-coffee_528814833.jpg',
         12000,
         'L',
-        count: 9,
+        count: 0,
         idGroup: 1),
     CoffeeItem(
         11,
@@ -101,7 +101,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
         32000,
         'XL',
-        count: 9,
+        count: 0,
         idGroup: 1),
     CoffeeItem(
         12,
@@ -109,7 +109,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEL7oJvelVAkRPi1gLDGMl-zCzUNhfykJyg&usqp=CAU',
         22000,
         'S',
-        count: 9,
+        count: 0,
         idGroup: 5),
     CoffeeItem(
         13,
