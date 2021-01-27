@@ -1,5 +1,5 @@
 import 'package:FirstApp/models/coffee_item.dart';
-import 'package:FirstApp/models/order.dart';
+import 'package:FirstApp/models/order_provider_model.dart';
 import 'package:FirstApp/pages/cart_screen.dart';
 import 'package:FirstApp/ui_view/coffee_grid_header.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class _HomeTableState extends State<HomeTable> {
             );
           else
             Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return CartScreen( idTable: widget.tableID);
+              return CartScreen(idTable: widget.tableID);
             }));
         },
       ),

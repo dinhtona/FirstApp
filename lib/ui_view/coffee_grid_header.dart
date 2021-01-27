@@ -98,7 +98,7 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
     CoffeeItem(
         11,
         'Cà phê nguyên chất size M',
-        'https://lh3.googleusercontent.com/proxy/zjAOBNFJiNoUYZV3169Kg9wgcnEKqM1D28zOsM_1an8OdH8Kzp5at_Y_4_hgU86Ws6RVPmZ7Z30JY6dgyvNiD7i0GBulqaQJMqPp4PIiDdOdmQ',
+        'https://nguyenchat.com.vn/wp-content/uploads/2019/02/ty-le-pha-ca-phe-phin-05-500x350.png',
         32000,
         'XL',
         count: 0,
