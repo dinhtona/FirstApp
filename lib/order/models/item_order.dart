@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 @immutable
 class ItemOrder extends Equatable {
-  ItemOrder(this.id, this.name, this.imageURL, this.price, {this.quantity = 1});
+  ItemOrder(this.id, this.name, this.imageURL, this.price, {this.quantity = 0});
 
   final int id;
   final String name;

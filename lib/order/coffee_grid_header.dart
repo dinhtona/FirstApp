@@ -37,8 +37,9 @@ class _CoffeeGridHeaderState extends State<CoffeeGridHeader> {
             padding: const EdgeInsets.all(8),
             itemCount: state.catalog.items.length,
             itemBuilder: (BuildContext context, int index) {
-              print(' Item: ' + state.catalog.items[index].name);
+              // print(' Item: ' + state.catalog.items[index].name);
               return CoffeeItemCard(
+                  key: Key(state.catalog.items[index].id.toString()),
                   idTable: widget.tableID,
                   itemOrder: state.catalog.items[index]);
               // Container(
