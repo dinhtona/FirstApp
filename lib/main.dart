@@ -1,24 +1,34 @@
 import 'dart:io';
 import 'package:FirstApp/app_theme.dart';
-import 'package:FirstApp/models/order_provider_model.dart';
+import 'package:FirstApp/simple_bloc_observer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
+
 import 'navigation_home_screen.dart';
+import 'order/bloc/cart_bloc.dart';
+import 'order/bloc/catalog_bloc.dart';
 
 void main() async {
+  Bloc.observer = SimpleBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ]).then(
     (_) => runApp(
-      MultiProvider(
+      MultiBlocProvider(
         providers: [
-          ChangeNotifierProvider<OrderModel>(create: (_) => OrderModel()),
-          // Provider<SomethingElse>(create: (_) => SomethingElse()),
-          // Provider<AnotherThing>(create: (_) => AnotherThing()),
+          // ChangeNotifierProvider<OrderModel>(create: (_) => OrderModel()),
+          BlocProvider<CartBloc>(
+            create: (_) => CartBloc()..add(CartStarted()),
+          ),
+          BlocProvider<CatalogBloc>(
+            create: (_) => CatalogBloc()..add(CatalogStarted()),
+          ),
+          //
         ],
         child: MyApp(),
       ),

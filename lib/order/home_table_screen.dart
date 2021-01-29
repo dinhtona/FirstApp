@@ -1,9 +1,12 @@
-import 'package:FirstApp/models/coffee_item.dart';
-import 'package:FirstApp/models/order_provider_model.dart';
 import 'package:FirstApp/pages/cart_screen.dart';
-import 'package:FirstApp/ui_view/coffee_grid_header.dart';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/cart_bloc.dart';
+import 'coffee_grid_header.dart';
+import 'coffee_item.dart';
+import 'order_provider_model.dart';
 
 class HomeTable extends StatefulWidget {
   final AnimationController animationController;
@@ -29,17 +32,39 @@ class _HomeTableState extends State<HomeTable> {
       ),
       floatingActionButton: new FloatingActionButton.extended(
         backgroundColor: Colors.pinkAccent,
-        label: Consumer<OrderModel>(
-          builder: (context, cart, child) {
-            // print('cart.listOrderF.length: ${cart}');
-            total = cart.totalItem(widget.tableID);
-            return Text(total.toString());
+        label: BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+            if (state is CartLoading) {
+              return const CircularProgressIndicator();
+            }
+            if (state is CartLoaded) {
+              return Text('${state.cart.totalItem}',
+                  style: const TextStyle(color: Colors.white));
+            }
+            return const SizedBox();
           },
         ),
+
+        // Consumer<OrderModel>(
+        //   builder: (context, cart, child) {
+        //     // print('cart.listOrderF.length: ${cart}');
+        //     total = cart.totalItem(widget.tableID);
+        //     return BlocBuilder<CartBloc, CartState>(builder: (context, state) {
+        //       if (state is CartLoading) {
+        //         return const CircularProgressIndicator();
+        //       }
+        //       if (state is CartLoaded) {
+        //         return Text('${state.cart.totalItem}',
+        //             style: const TextStyle(color: Colors.white));
+        //       }
+        //       return const Text('');
+        //     });
+        //   },
+        // ),
         heroTag: 'btnCart',
         icon: Icon(Icons.shopping_cart),
         onPressed: () {
-          print('total: ${total.toString()}');
+          // print('total: ${total.toString()}');
           if (total <= 0)
             Scaffold.of(context).showSnackBar(
               SnackBar(

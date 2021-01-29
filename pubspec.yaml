@@ -29,6 +29,8 @@ dependencies:
   cached_network_image: ^2.5.0
   carousel_pro: ^1.0.0
   collection: ^1.14.13
+  equatable: ^1.2.5
+  flutter_bloc: ^6.1.1
   flutter_blurhash: ^0.5.0
   flutter_cupertino_localizations: ^1.0.1
   flutter_material_color_picker: ^1.0.5

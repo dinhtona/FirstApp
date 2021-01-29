@@ -1,5 +1,7 @@
+
 import 'package:FirstApp/models/tabIcon_data.dart';
-import 'package:FirstApp/pages/home_table_screen.dart';
+import 'package:FirstApp/order/home_table_screen.dart';
+
 import 'package:FirstApp/traning/training_screen.dart';
 import 'package:flutter/material.dart';
 import '../bottom_navigation_view/bottom_bar_view.dart';

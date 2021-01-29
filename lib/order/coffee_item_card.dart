@@ -1,8 +1,9 @@
-import 'package:FirstApp/models/coffee_item.dart';
-import 'package:FirstApp/models/order_provider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
+
+import 'coffee_item.dart';
+import 'order_provider_model.dart';
 
 class CoffeeItemCard extends StatefulWidget {
   final CoffeeItem coffeeItem;
@@ -25,7 +26,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
   @override
   Widget build(BuildContext context) {
     CoffeeItem item = widget.coffeeItem;
-    var provider = Provider.of<OrderModel>(context);
+    // var provider = Provider.of<OrderModel>(context);
     return Card(
       margin: EdgeInsets.all(5.0),
       shape: RoundedRectangleBorder(
@@ -169,14 +170,8 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                               widget.coffeeItem.count -=
                                   widget.coffeeItem.numAdd;
                           });
-                          provider.updateItem(
-                              widget.idTable, widget.coffeeItem);
-                          // var order = context.read<OrderModel>();
-                          // if (widget.coffeeItem.count > 0) {
-                          //   order.updateItem(widget.idTable, widget.coffeeItem);
-                          // } else {
-                          //   order.removeItem(widget.idTable, widget.coffeeItem);
-                          // }
+                          // provider.updateItem(
+                          //     widget.idTable, widget.coffeeItem);
                         },
                       ),
                     ),
@@ -233,10 +228,9 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                               widget.coffeeItem.count +=
                                   widget.coffeeItem.numAdd;
                           });
-                          // var order = context.read<OrderModel>();
-                          // order.updateItem(widget.idTable, widget.coffeeItem);
-                          provider.updateItem(
-                              widget.idTable, widget.coffeeItem);
+
+                          // provider.updateItem(
+                          //     widget.idTable, widget.coffeeItem);
                         },
                       ),
                     ),
