@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:provider/provider.dart';
 
-import 'coffee_item.dart';
-import 'order_provider_model.dart';
+import 'models/item_order.dart';
 
 class CoffeeItemCard extends StatefulWidget {
-  final CoffeeItem coffeeItem;
+  final ItemOrder itemOrder;
   final int idTable;
 
   const CoffeeItemCard(
-      {Key key, @required this.idTable, @required this.coffeeItem})
+      {Key key, @required this.idTable, @required this.itemOrder})
       : super(key: key);
 
   @override
@@ -25,7 +24,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
 
   @override
   Widget build(BuildContext context) {
-    CoffeeItem item = widget.coffeeItem;
+    ItemOrder item = widget.itemOrder;
     // var provider = Provider.of<OrderModel>(context);
     return Card(
       margin: EdgeInsets.all(5.0),
@@ -71,7 +70,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                         fontFamily: 'tahoma'),
                   ),
                 ),
-                item.count > 0
+                item.quantity > 0
                     ? Positioned(
                         top: -5,
                         right: -5,
@@ -91,7 +90,7 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                           ),
                           alignment: Alignment.center,
                           child: Text(
-                            '${item.count}',
+                            '${item.quantity}',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -107,20 +106,21 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
               children: [
                 Expanded(
                   flex: 3,
-                  child: Center(
-                    child: Text(
-                      item.size,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child: SizedBox(),
+                  // Center(
+                  //   child: Text(
+                  //     item.price,
+                  //     style: TextStyle(
+                  //       fontSize: 14,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
                 ),
                 Expanded(
                   flex: 8,
                   child: Text(
-                    item.unitPrice.toString(),
+                    item.price.toString(),
                     textAlign: TextAlign.end,
                     style: TextStyle(
                       fontSize: 14,
@@ -165,10 +165,10 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                           // print(
                           //     'item.id: ${item.id} == widget.coffeeItem.id:${widget.coffeeItem.id}');
                           setState(() {
-                            if (item.count > 0 &&
-                                item.id == widget.coffeeItem.id)
-                              widget.coffeeItem.count -=
-                                  widget.coffeeItem.numAdd;
+                            if (item.quantity > 0 &&
+                                item.id == widget.itemOrder.id)
+                              widget.itemOrder.quantity -=
+                                  widget.itemOrder.quantity;
                           });
                           // provider.updateItem(
                           //     widget.idTable, widget.coffeeItem);
@@ -179,13 +179,13 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                   Expanded(
                     flex: 2,
                     child: new TextFormField(
-                      initialValue: item.numAdd.toString(),
+                      initialValue: widget.itemOrder.numAdd.toString(),
                       style: TextStyle(fontSize: 14),
                       onChanged: (value) {
                         // print('Value: ${value}');
                         setState(() {
-                          if (item.id == widget.coffeeItem.id)
-                            widget.coffeeItem.numAdd =
+                          if (item.id == widget.itemOrder.id)
+                            widget.itemOrder.numAdd =
                                 int.parse(value, onError: (value) => 1);
                         });
                       },
@@ -225,8 +225,8 @@ class _CoffeeItemCardState extends State<CoffeeItemCard> {
                           // print("Widget.item.id: ${widget.coffeeItem.id}");
                           setState(() {
                             if (Key(item.id.toString()) == widget.key)
-                              widget.coffeeItem.count +=
-                                  widget.coffeeItem.numAdd;
+                              widget.itemOrder.quantity +=
+                                  widget.itemOrder.numAdd;
                           });
 
                           // provider.updateItem(
